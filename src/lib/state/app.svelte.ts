@@ -1,4 +1,5 @@
 import {
+	backupReminder,
 	needsTranscription,
 	sortStudents,
 	type AppSettings,
@@ -10,7 +11,7 @@ import {
 	type TallyEvent
 } from '../domain';
 import { locale, nameCollator } from '../i18n';
-import type { Repository } from '../storage';
+import { requestPersistence, type Repository } from '../storage';
 
 /** Cache of the repository's data for the UI, plus the few app-wide derived values. */
 class AppState {
@@ -61,6 +62,22 @@ class AppState {
 		this.events.filter(needsTranscription).length +
 			this.events.filter((e) => e.checkRegister && !e.voidedAt).length
 	);
+
+	/** Creation time of the oldest event: the backup reminder starts counting there without an export. */
+	firstEventAt = $derived.by(() => {
+		let first: string | undefined;
+		for (const e of this.events) if (!first || e.createdAt < first) first = e.createdAt;
+		return first;
+	});
+
+	backup = $derived(
+		this.settings ? backupReminder(this.settings, this.firstEventAt, this.now) : undefined
+	);
+
+	/** The reminder is dismissed for the rest of the session only. */
+	backupDismissed = $state(false);
+
+	private persistenceRequested = false;
 
 	get categories(): CategorySettings[] {
 		return this.settings?.categories ?? [];
@@ -129,6 +146,13 @@ class AppState {
 		} finally {
 			this.reloading = false;
 		}
+	}
+
+	/** Asks the browser once per session to keep the data (after the first successful write). */
+	async protectStorage(): Promise<void> {
+		if (this.persistenceRequested) return;
+		this.persistenceRequested = true;
+		await requestPersistence();
 	}
 
 	async selectClass(classId: string): Promise<void> {

@@ -2,23 +2,26 @@ import { LIMITS } from './limits';
 import type { AppSettings, CategorySettings, LadderStep } from './types';
 import { ACTIONS, CATEGORY_IDS, LOCALES } from './types';
 
-export type IssueCode =
-	| 'window.integer'
-	| 'window.range'
-	| 'ladder.empty'
-	| 'ladder.notInteger'
-	| 'ladder.fromRange'
-	| 'ladder.firstNotOne'
-	| 'ladder.notIncreasing'
-	| 'ladder.badAction'
-	| 'label.empty'
-	| 'label.tooLong'
-	| 'quickNote.empty'
-	| 'quickNote.tooLong'
-	| 'quickNote.tooMany'
-	| 'backup.interval'
-	| 'categories.invalid'
-	| 'locale.invalid';
+export const ISSUE_CODES = [
+	'window.integer',
+	'window.range',
+	'ladder.empty',
+	'ladder.notInteger',
+	'ladder.fromRange',
+	'ladder.firstNotOne',
+	'ladder.notIncreasing',
+	'ladder.badAction',
+	'label.empty',
+	'label.tooLong',
+	'quickNote.empty',
+	'quickNote.tooLong',
+	'quickNote.tooMany',
+	'backup.interval',
+	'categories.invalid',
+	'locale.invalid'
+] as const;
+
+export type IssueCode = (typeof ISSUE_CODES)[number];
 
 export interface Issue {
 	code: IssueCode;

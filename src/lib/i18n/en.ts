@@ -17,6 +17,7 @@ export const en = {
 		loading: 'Loading…',
 		undo: 'Undo',
 		days: { one: '{count} day', other: '{count} days' },
+		classes: { one: '{count} class', other: '{count} classes' },
 		students: { one: '{count} student', other: '{count} students' },
 		events: { one: '{count} event', other: '{count} events' }
 	},
@@ -72,7 +73,10 @@ export const en = {
 		noStudents: 'No students in this class yet.',
 		importRoster: 'Import roster',
 		newClass: 'New class',
-		badgeAria: '{category}: {count}, next: {action}'
+		badgeAria: '{category}: {count}, next: {action}',
+		backupNever: 'You have not exported a backup yet.',
+		backupOld: 'Your last backup is {age} old.',
+		backupAction: 'Back up now'
 	},
 	sheet: {
 		title: 'Log for {student}',
@@ -197,7 +201,110 @@ export const en = {
 			en: 'English',
 			it: 'Italiano'
 		},
-		about: 'All data stays on this device.'
+		about: 'All data stays on this device.',
+		categories: {
+			title: 'Categories',
+			hint: 'Changes apply to new events only. Existing events keep their count and action.',
+			label: 'Label',
+			window: 'Rolling window (days)',
+			ladder: 'Ladder',
+			ladderFrom: 'From event no.',
+			ladderAction: 'Action',
+			addStep: 'Add step',
+			removeStep: 'Remove step',
+			quickNotes: 'Quick notes',
+			quickNote: 'Quick note',
+			addQuickNote: 'Add quick note',
+			removeQuickNote: 'Remove quick note',
+			save: 'Save category',
+			saved: 'Saved',
+			reset: 'Reset to defaults',
+			resetTitle: 'Reset {category} to defaults?',
+			resetBody:
+				'Label, window, ladder and quick notes go back to their defaults. Existing events are not changed.',
+			resetConfirm: 'Reset'
+		},
+		issues: {
+			window: {
+				integer: 'The window must be a whole number of days.',
+				range: 'The window must be between {min} and {max} days.'
+			},
+			ladder: {
+				empty: 'Add at least one step.',
+				notInteger: 'Each step needs a whole number.',
+				fromRange: 'Step numbers go from 1 to {max}.',
+				firstNotOne: 'The first step must start at 1.',
+				notIncreasing: 'Steps must increase: this one must be above {previous}.',
+				badAction: 'Choose an action.'
+			},
+			label: {
+				empty: 'Enter a label.',
+				tooLong: 'At most {max} characters.'
+			},
+			quickNote: {
+				empty: 'A quick note cannot be empty.',
+				tooLong: 'At most {max} characters.',
+				tooMany: 'At most {max} quick notes.'
+			},
+			backup: {
+				interval: 'Enter a number of days from 0 to {max}.'
+			},
+			categories: {
+				invalid: 'The category settings are incomplete.'
+			},
+			locale: {
+				invalid: 'Unknown language.'
+			}
+		},
+		backup: {
+			title: 'Backup',
+			interval: 'Remind me to back up every (days)',
+			intervalHelp: '0 turns the reminder off.',
+			lastExport: 'Last export: {date}',
+			never: 'No export yet.',
+			exportJson: 'Export backup (JSON)',
+			exportCsv: 'Export events (CSV)',
+			exported: 'Export ready',
+			exportFailed: 'The export did not work.',
+			importTitle: 'Import backup',
+			chooseFile: 'Choose backup file',
+			contents: 'Backup of {date}: {classes}, {students}, {events}.',
+			modeLabel: 'How to import',
+			merge: 'Merge with current data',
+			mergeHelp: 'Records are matched by id and the newer change wins. Nothing is deleted.',
+			replace: 'Replace current data',
+			replaceHelp: 'Everything on this device is replaced by the backup. Export first if unsure.',
+			willChange: 'New: {added}, updated: {updated}, removed: {removed}.',
+			importMerge: 'Merge',
+			importReplace: 'Replace',
+			done: 'Imported. New: {added}, updated: {updated}, removed: {removed}.',
+			errors: {
+				notJson: 'This file is not valid JSON.',
+				badFormat: 'This is not a class-tally backup.',
+				newerSchema: 'This backup comes from a newer version of the app. Update the app first.',
+				invalid: 'The file is damaged or incomplete.',
+				integrity: 'The file refers to records that are missing.',
+				failed: 'Import failed.'
+			}
+		},
+		storage: {
+			title: 'Storage',
+			persisted: 'Protected: the browser will not clear this data on its own.',
+			notPersisted:
+				'Not protected: the browser may clear this data when space runs low. Keep backups.',
+			unsupported: 'This browser cannot tell whether the data is protected.',
+			request: 'Ask for protection',
+			granted: 'Protection granted.',
+			denied: 'The browser did not grant protection.'
+		},
+		delete: {
+			title: 'Delete all data',
+			body: 'Removes every class, student and event from this device. Export a backup first. This cannot be undone.',
+			word: 'DELETE',
+			typeWord: 'Type {word} to confirm',
+			button: 'Delete everything',
+			done: 'All data deleted.'
+		}
 	},
 	errors: {
 		generic: 'Something went wrong.',

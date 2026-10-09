@@ -5,3 +5,4 @@ export * from './dexie';
 export * from './memory';
 export * from './migrations';
 export * from './repository';
+export * from './persistence';

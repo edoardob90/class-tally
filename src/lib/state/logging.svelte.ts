@@ -74,6 +74,7 @@ class LoggingState {
 		});
 		pending.then(
 			(event) => {
+				void app.protectStorage();
 				// The stored snapshot is authoritative; correct the message if the cache was stale.
 				if (event.countAtCreation !== preview.count || event.action !== preview.action) {
 					toast.updateText(toastId, describe(event.countAtCreation, event.action));

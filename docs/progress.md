@@ -28,8 +28,8 @@ _State after milestone 3 (updated at the end of every milestone; see the log bel
 ### What is done, partial, missing
 
 - Done: milestones 1 to 3 (domain core and storage, localization and logging flow, To transcribe, history, void). All unit and e2e tests pass.
-- Partial: Settings has only the language switch.
-- Missing: milestones 4 and 5 (settings editor, backups and exports, PWA install and offline, deploy workflow). The README already describes them.
+- Done: milestone 4 (settings editor, backups and exports, reminder, delete all, storage status).
+- Missing: milestone 5 (PWA install and offline, deploy workflow). The README already describes them.
 
 ### Known issues and open questions
 
@@ -103,3 +103,10 @@ _State after milestone 3 (updated at the end of every milestone; see the log bel
 - E2E added: transcribe and undo, void with recomputation and check-register flag, warning for transcribed events, class range and note edit. 14 e2e tests pass.
 - Status: lint, type check, 179 unit tests, build and 14 e2e tests pass.
 - Next: milestone 4 (settings editor, backups, exports, delete all, storage persistence).
+
+### 2026-10-09 – Milestone 4: settings and data management
+
+- Done: category editor (label, rolling window, ladder rows, quick notes, inline validation messages from issue codes, reset to defaults with confirmation, `labelEdited` and `quickNotesEdited` flags), backup reminder interval and a non-blocking banner on the class screen, JSON backup and CSV export (share sheet on touch devices, download elsewhere; only the JSON export resets the reminder), backup import with a preview of both modes (merge, replace) and explicit choice, delete all data with a typed (localized) word, storage persistence status and request (also requested once per session after the first successful write), Italian strings for all of it.
+- E2E added: window change affects live counts, invalid window and ladder messages, ladder change applies to new events and reset restores defaults, edited labels vs language, export JSON and CSV and import into an empty app, replace and refused files, reminder timing (fake clock), reminder off, delete all, storage status. 25 e2e tests pass.
+- Status: lint, type check, 186 unit tests, build and 25 e2e tests pass.
+- Next: milestone 5 (manifest, icons, service worker, offline, deploy workflow, VPS script).

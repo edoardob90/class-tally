@@ -10,7 +10,13 @@ export default defineConfig(
 	ts.configs.recommended,
 	svelte.configs.recommended,
 	{
-		languageOptions: { globals: { ...globals.browser, ...globals.node } }
+		languageOptions: { globals: { ...globals.browser, ...globals.node } },
+		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+			]
+		}
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts'],

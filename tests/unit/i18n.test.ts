@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defaultCategory, CATEGORY_IDS } from '../../src/lib/domain';
+import { defaultCategory, CATEGORY_IDS, ISSUE_CODES } from '../../src/lib/domain';
 import {
 	DEFAULT_QUICK_NOTE_KEYS,
 	categoryLabel,
@@ -156,6 +156,15 @@ describe('t()', () => {
 			tEn('nav.history');
 		};
 		expect(typeChecks).toBeTypeOf('function');
+	});
+});
+
+describe('validation messages', () => {
+	it('exist in both languages for every issue code, with the placeholders the validator provides', () => {
+		for (const code of ISSUE_CODES) {
+			expect(flatEn.has(`settings.issues.${code}`), code).toBe(true);
+			expect(flatIt.has(`settings.issues.${code}`), code).toBe(true);
+		}
 	});
 });
 

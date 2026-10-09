@@ -43,6 +43,9 @@ export type Params<K extends Key> = [ParamNames<LeafAt<En, K>>] extends [never]
 /** Typed translation function: only valid keys, parameters required exactly when needed. */
 export type TFn = <K extends Key>(key: K, ...params: Params<K>) => string;
 
+/** Untyped view of `t()` for keys built at run time (e.g. from validation issue codes). */
+export type LooseTFn = (key: string, params?: Record<string, string | number>) => string;
+
 export type Dictionaries = Record<Locale, Messages>;
 
 const PLACEHOLDER = /\{(\w+)\}/g;

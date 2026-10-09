@@ -14,13 +14,17 @@ export const smallRoster = JSON.stringify({
 });
 
 /** Imports a roster through the UI and lands on the class grid. */
-export async function importRoster(page: Page, text: string = rosterText): Promise<void> {
+export async function importRoster(
+	page: Page,
+	text: string = rosterText,
+	firstLabel = 'Aurora A.'
+): Promise<void> {
 	await page.goto('./');
 	await page.getByRole('link', { name: 'Import roster' }).first().click();
 	await page.getByLabel('Roster text').fill(text);
 	await page.getByRole('button', { name: 'Preview' }).click();
 	await page.getByRole('button', { name: /^Import \d+ students?$/ }).click();
-	await expect(page.getByRole('button', { name: /Aurora A\./ })).toBeVisible();
+	await expect(student(page, firstLabel)).toBeVisible();
 }
 
 export const student = (page: Page, label: string): Locator =>

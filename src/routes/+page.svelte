@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import CategorySheet from '../lib/components/CategorySheet.svelte';
 	import ClassSwitcher from '../lib/components/ClassSwitcher.svelte';
-	import { PlusIcon, UploadIcon, UsersIcon } from '../lib/components/icons';
+	import { DownloadIcon, PlusIcon, UploadIcon, UsersIcon, XIcon } from '../lib/components/icons';
 	import StudentGrid from '../lib/components/StudentGrid.svelte';
 	import type { CategoryId, Student } from '../lib/domain';
 	import { t } from '../lib/i18n';
@@ -21,6 +21,26 @@
 <svelte:head>
 	<title>{t('nav.classView')} · {t('app.name')}</title>
 </svelte:head>
+
+{#if app.backup?.due && !app.backupDismissed}
+	<div class="card mb-3 flex items-center gap-2 border-amber-400 bg-amber-50" role="status">
+		<p class="min-w-0 flex-1 text-sm font-semibold">
+			{app.backup.never
+				? t('home.backupNever')
+				: t('home.backupOld', { age: t('common.days', { count: app.backup.daysSince ?? 0 }) })}
+		</p>
+		<a class="btn" href={resolve('/settings')}><DownloadIcon size={18} />{t('home.backupAction')}</a
+		>
+		<button
+			type="button"
+			class="btn"
+			aria-label={t('toast.dismiss')}
+			onclick={() => (app.backupDismissed = true)}
+		>
+			<XIcon size={18} />
+		</button>
+	</div>
+{/if}
 
 {#if app.currentClass}
 	<header class="mb-3 flex items-center justify-between gap-2">

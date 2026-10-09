@@ -19,6 +19,7 @@ export const it: Messages = {
 		loading: 'Caricamento…',
 		undo: 'Annulla',
 		days: { one: '{count} giorno', other: '{count} giorni' },
+		classes: { one: '{count} classe', other: '{count} classi' },
 		students: { one: '{count} studente', other: '{count} studenti' },
 		events: { one: '{count} evento', other: '{count} eventi' }
 	},
@@ -75,7 +76,10 @@ export const it: Messages = {
 		noStudents: 'Questa classe non ha ancora studenti.',
 		importRoster: 'Importa elenco',
 		newClass: 'Nuova classe',
-		badgeAria: '{category}: {count}, prossimo: {action}'
+		badgeAria: '{category}: {count}, prossimo: {action}',
+		backupNever: 'Non hai ancora esportato un backup.',
+		backupOld: 'L’ultimo backup risale a {age} fa.',
+		backupAction: 'Fai il backup ora'
 	},
 	sheet: {
 		title: 'Segna per {student}',
@@ -203,7 +207,113 @@ export const it: Messages = {
 			en: 'English',
 			it: 'Italiano'
 		},
-		about: 'Tutti i dati restano su questo dispositivo.'
+		about: 'Tutti i dati restano su questo dispositivo.',
+		categories: {
+			title: 'Categorie',
+			hint: 'Le modifiche valgono solo per i nuovi eventi. Gli eventi già registrati restano come sono.',
+			label: 'Etichetta',
+			window: 'Finestra (giorni)', // glossary
+			ladder: 'Scala',
+			ladderFrom: 'Dall’evento n.',
+			ladderAction: 'Azione',
+			addStep: 'Aggiungi gradino',
+			removeStep: 'Rimuovi gradino',
+			quickNotes: 'Note rapide',
+			quickNote: 'Nota rapida',
+			addQuickNote: 'Aggiungi nota rapida',
+			removeQuickNote: 'Rimuovi nota rapida',
+			save: 'Salva categoria',
+			saved: 'Salvato',
+			reset: 'Ripristina i valori predefiniti',
+			resetTitle: 'Ripristinare {category} ai valori predefiniti?',
+			resetBody:
+				'Etichetta, finestra, scala e note rapide tornano ai valori predefiniti. Gli eventi già registrati non cambiano.',
+			resetConfirm: 'Ripristina'
+		},
+		issues: {
+			window: {
+				integer: 'La finestra deve essere un numero intero di giorni.',
+				range: 'La finestra deve essere tra {min} e {max} giorni.'
+			},
+			ladder: {
+				empty: 'Aggiungi almeno un gradino.',
+				notInteger: 'Ogni gradino richiede un numero intero.',
+				fromRange: 'I numeri dei gradini vanno da 1 a {max}.',
+				firstNotOne: 'Il primo gradino deve partire da 1.',
+				notIncreasing: 'I gradini devono crescere: questo deve essere maggiore di {previous}.',
+				badAction: 'Scegli un’azione.'
+			},
+			label: {
+				empty: 'Scrivi un’etichetta.',
+				tooLong: 'Al massimo {max} caratteri.'
+			},
+			quickNote: {
+				empty: 'Una nota rapida non può essere vuota.',
+				tooLong: 'Al massimo {max} caratteri.',
+				tooMany: 'Al massimo {max} note rapide.'
+			},
+			backup: {
+				interval: 'Scrivi un numero di giorni da 0 a {max}.'
+			},
+			categories: {
+				invalid: 'Le impostazioni delle categorie sono incomplete.'
+			},
+			locale: {
+				invalid: 'Lingua sconosciuta.'
+			}
+		},
+		backup: {
+			title: 'Backup',
+			interval: 'Ricordami il backup ogni (giorni)',
+			intervalHelp: '0 disattiva il promemoria.',
+			lastExport: 'Ultima esportazione: {date}',
+			never: 'Nessuna esportazione finora.',
+			exportJson: 'Esporta backup (JSON)',
+			exportCsv: 'Esporta eventi (CSV)',
+			exported: 'Esportazione pronta',
+			exportFailed: 'L’esportazione non è riuscita.',
+			importTitle: 'Importa backup',
+			chooseFile: 'Scegli il file di backup',
+			contents: 'Backup del {date}: {classes}, {students}, {events}.',
+			modeLabel: 'Come importare',
+			merge: 'Unisci ai dati attuali',
+			mergeHelp:
+				'I record si abbinano per id e vince la modifica più recente. Non si cancella nulla.',
+			replace: 'Sostituisci i dati attuali',
+			replaceHelp:
+				'Tutto ciò che c’è su questo dispositivo viene sostituito dal backup. Esporta prima, se hai dubbi.',
+			willChange: 'Nuovi: {added}, aggiornati: {updated}, rimossi: {removed}.',
+			importMerge: 'Unisci',
+			importReplace: 'Sostituisci',
+			done: 'Importato. Nuovi: {added}, aggiornati: {updated}, rimossi: {removed}.',
+			errors: {
+				notJson: 'Questo file non è un JSON valido.',
+				badFormat: 'Questo non è un backup di class-tally.',
+				newerSchema:
+					'Questo backup viene da una versione più recente dell’app. Aggiorna prima l’app.',
+				invalid: 'Il file è danneggiato o incompleto.',
+				integrity: 'Il file rimanda a record che mancano.',
+				failed: 'Importazione non riuscita.'
+			}
+		},
+		storage: {
+			title: 'Memoria',
+			persisted: 'Protetta: il browser non cancella questi dati da solo.',
+			notPersisted:
+				'Non protetta: il browser potrebbe cancellare questi dati se lo spazio scarseggia. Fai dei backup.',
+			unsupported: 'Questo browser non sa dire se i dati sono protetti.',
+			request: 'Chiedi la protezione',
+			granted: 'Protezione concessa.',
+			denied: 'Il browser non ha concesso la protezione.'
+		},
+		delete: {
+			title: 'Elimina tutti i dati',
+			body: 'Toglie da questo dispositivo ogni classe, studente ed evento. Esporta prima un backup. Non si può annullare.',
+			word: 'ELIMINA',
+			typeWord: 'Scrivi {word} per confermare',
+			button: 'Elimina tutto',
+			done: 'Tutti i dati sono stati eliminati.'
+		}
 	},
 	errors: {
 		generic: 'Qualcosa è andato storto.',

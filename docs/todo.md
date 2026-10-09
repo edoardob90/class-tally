@@ -47,15 +47,15 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 ## M4 – Settings and data management
 
-- [ ] Category settings editor with validation, reset to defaults
-- [ ] Backup reminder interval, language selector (final form)
-- [ ] JSON backup export and CSV export
-- [ ] Import with preview, replace or merge
-- [ ] Backup reminder banner
-- [ ] Delete all data (typed confirmation)
-- [ ] Persistent storage request and status
-- [ ] Italian review against the glossary
-- [ ] e2e: change window, export/import round trip
+- [x] Category settings editor with validation, reset to defaults
+- [x] Backup reminder interval, language selector (final form)
+- [x] JSON backup export and CSV export
+- [x] Import with preview, replace or merge
+- [x] Backup reminder banner
+- [x] Delete all data (typed confirmation)
+- [x] Persistent storage request and status
+- [x] Italian review against the glossary
+- [x] e2e: change window, export/import round trip
 
 ## M5 – PWA and deployment
 
