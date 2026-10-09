@@ -49,11 +49,11 @@ describe('data services', () => {
 
 	it('creates dated file names and contents', async () => {
 		const repo = await repoWithData();
-		const now = new Date(local(2026, 10, 9, 12));
+		const now = new Date(local(2026, 10, 9, 14, 32) + 5_000);
 		const json = await createBackupFile(repo, now);
 		const csv = await createCsvFile(repo, now);
-		expect(json.filename).toBe('class-tally-backup-2026-10-09.json');
-		expect(csv.filename).toBe('class-tally-events-2026-10-09.csv');
+		expect(json.filename).toBe('class-tally-backup-2026-10-09_14-32-05.json');
+		expect(csv.filename).toBe('class-tally-events-2026-10-09_14-32-05.csv');
 		expect(JSON.parse(json.text).format).toBe('class-tally-backup');
 		expect(csv.text.split('\r\n')[1]).toContain('1AX,Davide A.,behaviour');
 	});

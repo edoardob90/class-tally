@@ -84,6 +84,7 @@ _State at the end of the session (see the log below for details)._
 - D-42 storage protection explained on screen
 - D-43 service worker type-checks cleanly in any editor
 - D-44 category colours from Flexoki (purple, green, cyan) as card backgrounds; level colours on their own chip
+- D-45 export file names carry local date and time
 
 ## Log
 
@@ -134,3 +135,7 @@ _State at the end of the session (see the log below for details)._
 
 - Event rows (To transcribe and History) rebuilt in tiers with separate category, action and count chips; the count ("No. 2") is now a dark badge; status pills no longer resemble the action chip; storage protection explained in Settings.
 - Status: lint, type check, 186 unit tests and 28 e2e tests pass.
+
+### 2026-10-09 – Post-v0 feedback: export file names
+
+- Done: JSON and CSV exports are named with local date and time to the second (`class-tally-backup-2026-10-09_14-32-05.json`), so two exports on the same day no longer overwrite each other (D-45).

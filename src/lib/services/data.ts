@@ -1,4 +1,4 @@
-import { dayKey } from '../domain';
+import { fileStamp } from '../domain';
 import {
 	eventsToCsv,
 	parseBackupText,
@@ -22,7 +22,7 @@ export async function createBackupFile(
 ): Promise<ExportFile> {
 	const backup = await repo.exportAll();
 	return {
-		filename: `class-tally-backup-${dayKey(now.getTime())}.json`,
+		filename: `class-tally-backup-${fileStamp(now.getTime())}.json`,
 		mime: 'application/json',
 		text: JSON.stringify(backup, null, 2)
 	};
@@ -36,7 +36,7 @@ export async function createCsvFile(repo: Repository, now: Date = new Date()): P
 		repo.listStudents()
 	]);
 	return {
-		filename: `class-tally-events-${dayKey(now.getTime())}.csv`,
+		filename: `class-tally-events-${fileStamp(now.getTime())}.csv`,
 		mime: 'text/csv',
 		text: eventsToCsv(events, { classes, students })
 	};
