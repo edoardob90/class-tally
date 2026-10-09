@@ -35,7 +35,7 @@ _State at the end of the session (see the log below for details)._
 ### Known issues and open questions
 
 - The toast covers the bottom of the screen for 8 seconds; it can be dismissed with the close button.
-- WebKit (Safari engine) is only exercised in CI (non-blocking); local e2e runs use Chromium with an iPhone profile.
+- WebKit (Safari engine) is only exercised in CI, in a non-blocking step (a failure there does not fail the job, so look at that step's log); local e2e runs use Chromium with an iPhone profile. The last CI run (commit 04481c1) was green: lint, type check, unit tests, build, e2e at the root and under `/class-tally`, and the WebKit step.
 - The Italian strings are a first draft for review (`src/lib/i18n/it.ts`).
 
 ### Decisions beyond the spec (see `docs/decisions.md`)
