@@ -186,3 +186,8 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 
 - Context: `navigator.storage.persist()` is a request the browser answers by its own rules (Chrome: installed, bookmarked or high engagement; Safari: home screen apps). On localhost or in an ordinary tab a "no" is normal.
 - Choice: the denied message says so, and a hint under the button explains who says yes and that backups are the real safety net.
+
+## D-43 Service worker type-checks in any editor
+
+- Context: SvelteKit requires the worker to be excluded from the main tsconfig, and the separate `tsconfig.service-worker.json` is only used by `npm run check`. Editors (found in Zed) that pick the nearest `tsconfig.json` checked the file with no SvelteKit or WebWorker types and showed 11 errors.
+- Choice: triple-slash references in the file itself (`lib="webworker"`, `types="@sveltejs/kit"`, as in the SvelteKit docs), and the worker takes its base path from `self.registration.scope` instead of `$app/paths`, so it does not depend on generated route types. Verified with `tsc --ignoreConfig --strict` on the file alone, plus the usual checks and the offline e2e tests at both base paths.

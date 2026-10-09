@@ -82,6 +82,7 @@ _State at the end of the session (see the log below for details)._
 - D-40 exports use the share sheet on touch devices, a download elsewhere
 - D-41 tiered event layout with distinct chips, status pills in colours no level uses
 - D-42 storage protection explained on screen
+- D-43 service worker type-checks cleanly in any editor
 
 ## Log
 

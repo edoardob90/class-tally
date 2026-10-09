@@ -1,22 +1,27 @@
+/// <reference no-default-lib="true"/>
+/// <reference lib="esnext" />
+/// <reference lib="webworker" />
+/// <reference types="@sveltejs/kit" />
+
 // App shell for offline use: precache everything the build produced, then serve from the cache.
 // Nothing is ever fetched from another origin, and nothing but the app's own files is cached.
 import { version } from '$app/env';
 import { assets, immutable, prerendered } from '$app/manifest';
-import { asset, resolve } from '$app/paths';
 import { self } from '$app/service-worker';
 
 const PREFIX = 'class-tally-';
 const CACHE = `${PREFIX}${version}`;
 
-// The manifest paths are relative to the base path (which is empty or `/something`).
-const root = resolve('/');
+// The worker's scope is the app's own folder ("/" or "/class-tally/"), which is the base path.
+// The manifest paths are relative to it.
+const root = new URL(self.registration.scope).pathname;
 const at = (path: string) => root + path.replace(/^\//, '');
 
 /** Every file of the app: build output, static files and prerendered pages. */
 const urls = [
 	...new Set([
 		...immutable.map((e) => at(e.path)),
-		...assets.map((e) => asset(e.path)),
+		...assets.map((e) => at(e.path)),
 		...prerendered.map((e) => at(e.path))
 	])
 ];
