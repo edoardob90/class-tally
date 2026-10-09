@@ -6,12 +6,15 @@
 	let {
 		open,
 		title,
+		initial = '',
 		quick,
 		onsave,
 		onclose
 	}: {
 		open: boolean;
 		title: string;
+		/** Text the field starts with (editing an existing note). */
+		initial?: string;
 		quick: string[];
 		onsave: (text: string) => void;
 		onclose: () => void;
@@ -20,7 +23,7 @@
 	let text = $state('');
 
 	$effect(() => {
-		if (open) text = '';
+		if (open) text = initial;
 	});
 
 	function addQuick(phrase: string) {

@@ -38,12 +38,12 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 ## M3 – Summary and history
 
-- [ ] "To transcribe" view with grouping, flagged items, badge
-- [ ] Mark transcribed (single and all for class), undo
-- [ ] Per-student and per-class history
-- [ ] Void with confirmation and recomputation
-- [ ] Playwright e2e for transcribe, void, persistence
-- [ ] README and progress Summary written
+- [x] "To transcribe" view with grouping, flagged items, badge
+- [x] Mark transcribed (single and all for class), undo
+- [x] Per-student and per-class history
+- [x] Void with confirmation and recomputation
+- [x] Playwright e2e for transcribe, void, persistence
+- [x] README and progress Summary written
 
 ## M4 – Settings and data management
 

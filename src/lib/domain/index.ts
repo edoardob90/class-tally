@@ -2,6 +2,7 @@ export * from './types';
 export * from './limits';
 export * from './defaults';
 export * from './time';
+export * from './days';
 export * from './rules';
 export * from './recompute';
 export * from './validation';

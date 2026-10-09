@@ -1,4 +1,4 @@
-import { LOCALES, type Locale } from '../domain';
+import { LOCALES, dayKey, addDaysToKey, startOfDay, type Locale } from '../domain';
 import { en } from './en';
 import { it } from './it';
 import { createTranslator, type Dictionaries, type Key, type TFn } from './translate';
@@ -66,4 +66,12 @@ export function formatNumber(value: number, options?: Intl.NumberFormatOptions) 
 /** Collator for sorting names in the active locale. */
 export function nameCollator(): Intl.Collator {
 	return new Intl.Collator(current, { numeric: true, sensitivity: 'base' });
+}
+
+/** Heading for a local day (`YYYY-MM-DD`): "Today", "Yesterday" or a short date. */
+export function dayHeading(key: string, now: number = Date.now()): string {
+	const today = dayKey(now);
+	if (key === today) return t('transcribe.today');
+	if (key === addDaysToKey(today, -1)) return t('transcribe.yesterday');
+	return formatDate(startOfDay(key), { weekday: 'long', day: 'numeric', month: 'long' });
 }
