@@ -1,0 +1,319 @@
+{
+	"classes": [
+		{
+			"class": "1AX",
+			"students": [
+				{
+					"id": "1AX-01",
+					"name": "Agata Aurora",
+					"weight": 1
+				},
+				{
+					"id": "1AX-02",
+					"name": "Alabastro Dario",
+					"weight": 1
+				},
+				{
+					"id": "1AX-03",
+					"name": "Ambra Greta",
+					"weight": 1
+				},
+				{
+					"id": "1AX-04",
+					"name": "Ametista Jacopo",
+					"weight": 1
+				},
+				{
+					"id": "1AX-05",
+					"name": "Basalto Marta",
+					"weight": 0
+				},
+				{
+					"id": "1AX-06",
+					"name": "Berillo Paolo",
+					"weight": 1
+				},
+				{
+					"id": "1AX-07",
+					"name": "Calcite Sara",
+					"weight": 1
+				},
+				{
+					"id": "1AX-08",
+					"name": "Citrino Vera",
+					"weight": 1
+				},
+				{
+					"id": "1AX-09",
+					"name": "Cobalto Zeno",
+					"weight": 1
+				},
+				{
+					"id": "1AX-10",
+					"name": "Corallo Cinzia",
+					"weight": 1
+				},
+				{
+					"id": "1AX-11",
+					"name": "Dell'Oro Franco",
+					"weight": 1
+				},
+				{
+					"id": "1AX-12",
+					"name": "Diaspro Lorenzo",
+					"weight": 1
+				},
+				{
+					"id": "1AX-13",
+					"name": "Ematite Oscar",
+					"weight": 1
+				},
+				{
+					"id": "1AX-14",
+					"name": "Fluorite Silvia",
+					"weight": 1
+				},
+				{
+					"id": "1AX-15",
+					"name": "Galena Alessio",
+					"weight": 1
+				},
+				{
+					"id": "1AX-16",
+					"name": "Giacinto Dalila",
+					"weight": 1
+				},
+				{
+					"id": "1AX-17",
+					"name": "Giada Gianni",
+					"weight": 1
+				},
+				{
+					"id": "1AX-18",
+					"name": "Giaietto Lidia",
+					"weight": 1
+				},
+				{
+					"id": "1AX-19",
+					"name": "Grafite Orlando",
+					"weight": 1
+				},
+				{
+					"id": "1AX-20",
+					"name": "Granato Stella",
+					"weight": 1
+				},
+				{
+					"id": "1AX-21",
+					"name": "Iolite Valerio",
+					"weight": 1
+				}
+			]
+		},
+		{
+			"class": "2BX",
+			"students": [
+				{
+					"id": "2BX-01",
+					"name": "Lapislazzulo Vera",
+					"weight": 1
+				},
+				{
+					"id": "2BX-02",
+					"name": "Magnetite Zeno",
+					"weight": 1
+				},
+				{
+					"id": "2BX-03",
+					"name": "Malachite Cinzia",
+					"weight": 1
+				},
+				{
+					"id": "2BX-04",
+					"name": "Mica Franco",
+					"weight": 1
+				},
+				{
+					"id": "2BX-05",
+					"name": "Nefrite Lorenzo",
+					"weight": 1
+				},
+				{
+					"id": "2BX-06",
+					"name": "Onice Oscar",
+					"weight": 1
+				},
+				{
+					"id": "2BX-07",
+					"name": "Opale Silvia",
+					"weight": 1
+				},
+				{
+					"id": "2BX-08",
+					"name": "Peridoto Alessio",
+					"weight": 0.5
+				},
+				{
+					"id": "2BX-09",
+					"name": "Pirite Dalila",
+					"weight": 1
+				},
+				{
+					"id": "2BX-10",
+					"name": "Quarzo Gianni",
+					"weight": 1
+				},
+				{
+					"id": "2BX-11",
+					"name": "Rodonite Lidia",
+					"weight": 1
+				},
+				{
+					"id": "2BX-12",
+					"name": "Rubino Orlando",
+					"weight": 1
+				},
+				{
+					"id": "2BX-13",
+					"name": "Selenite Stella",
+					"weight": 1
+				},
+				{
+					"id": "2BX-14",
+					"name": "Smeraldo Valerio",
+					"weight": 1
+				},
+				{
+					"id": "2BX-15",
+					"name": "Topazio Carla",
+					"weight": 1
+				},
+				{
+					"id": "2BX-16",
+					"name": "Tormalina Fabio",
+					"weight": 1
+				},
+				{
+					"id": "2BX-17",
+					"name": "Turchese Ilaria",
+					"weight": 1
+				},
+				{
+					"id": "2BX-18",
+					"name": "Zaffiro Luca",
+					"weight": 1
+				},
+				{
+					"id": "2BX-19",
+					"name": "Zircone Ornella",
+					"weight": 1
+				}
+			]
+		},
+		{
+			"class": "3CX",
+			"students": [
+				{
+					"id": "3CX-01",
+					"name": "Argentièra Tommaso",
+					"weight": 1
+				},
+				{
+					"id": "3CX-02",
+					"name": "Bismuto Benedetta",
+					"weight": 1
+				},
+				{
+					"id": "3CX-03",
+					"name": "Cuprite Enea",
+					"weight": 1
+				},
+				{
+					"id": "3CX-04",
+					"name": "Dolomite Hilda",
+					"weight": 1
+				},
+				{
+					"id": "3CX-05",
+					"name": "Epidoto Mattia",
+					"weight": 1
+				},
+				{
+					"id": "3CX-06",
+					"name": "Feldspato Piera",
+					"weight": 1
+				},
+				{
+					"id": "3CX-07",
+					"name": "Gesso Tullio",
+					"weight": 1
+				},
+				{
+					"id": "3CX-08",
+					"name": "Idocrasio Aurora",
+					"weight": 1
+				},
+				{
+					"id": "3CX-09",
+					"name": "Labradorite Dario",
+					"weight": 1
+				},
+				{
+					"id": "3CX-10",
+					"name": "Marcasite Greta",
+					"weight": 1
+				},
+				{
+					"id": "3CX-11",
+					"name": "Olivina Jacopo",
+					"weight": 1
+				},
+				{
+					"id": "3CX-12",
+					"name": "Prehnite Marta",
+					"weight": 1
+				},
+				{
+					"id": "3CX-13",
+					"name": "Realgar Paolo",
+					"weight": 1
+				},
+				{
+					"id": "3CX-14",
+					"name": "Sodalite Sara",
+					"weight": 1
+				},
+				{
+					"id": "3CX-15",
+					"name": "Talco Vera",
+					"weight": 1
+				},
+				{
+					"id": "3CX-16",
+					"name": "Ulexite Zeno",
+					"weight": 1
+				},
+				{
+					"id": "3CX-17",
+					"name": "Vesuviana Cinzia",
+					"weight": 1
+				},
+				{
+					"id": "3CX-18",
+					"name": "Wulfenite Franco",
+					"weight": 1
+				},
+				{
+					"id": "3CX-19",
+					"name": "Zoisite Lorenzo",
+					"weight": 1
+				},
+				{
+					"id": "3CX-20",
+					"name": "Zolfo Oscar",
+					"weight": 1
+				}
+			]
+		}
+	]
+}
