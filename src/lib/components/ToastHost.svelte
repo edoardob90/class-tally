@@ -46,28 +46,39 @@
 				? 'bg-red-800'
 				: 'bg-slate-900'}"
 		>
-			<p class="px-4 pt-3 text-sm font-medium">{toastItem.text}</p>
-			<div class="flex flex-wrap items-center gap-2 px-3 pt-2 pb-3">
-				{#each toastItem.actions as action (action.key)}
-					{@const Icon = action.icon}
-					<button
-						type="button"
-						class="btn border-white/30 bg-white/10 text-white"
-						onclick={() => void action.run()}
-					>
-						{#if Icon}<Icon size={18} />{/if}
-						{action.label}
-					</button>
-				{/each}
+			{#snippet dismiss()}
 				<button
 					type="button"
-					class="btn ml-auto border-transparent bg-transparent text-white"
+					class="btn border-transparent bg-transparent text-white"
 					aria-label={t('toast.dismiss')}
 					onclick={() => toast.dismiss(toastItem.id)}
 				>
 					<XIcon size={18} />
 				</button>
-			</div>
+			{/snippet}
+			{#if toastItem.actions.length === 0}
+				<!-- Message only: one compact row. -->
+				<div class="flex items-center gap-2 py-1 pr-1 pl-4">
+					<p class="min-w-0 flex-1 text-sm font-medium">{toastItem.text}</p>
+					{@render dismiss()}
+				</div>
+			{:else}
+				<p class="px-4 pt-3 text-sm font-medium">{toastItem.text}</p>
+				<div class="flex flex-wrap items-center gap-2 px-3 pt-2 pb-3">
+					{#each toastItem.actions as action (action.key)}
+						{@const Icon = action.icon}
+						<button
+							type="button"
+							class="btn border-white/30 bg-white/10 text-white"
+							onclick={() => void action.run()}
+						>
+							{#if Icon}<Icon size={18} />{/if}
+							{action.label}
+						</button>
+					{/each}
+					<span class="ml-auto">{@render dismiss()}</span>
+				</div>
+			{/if}
 			<div class="h-1 bg-white/20">
 				<div class="h-full bg-white/80" style="width: {remaining * 100}%"></div>
 			</div>
