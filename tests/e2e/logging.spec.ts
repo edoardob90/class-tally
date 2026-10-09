@@ -111,6 +111,8 @@ test.describe('roster import and logging', () => {
 		await log(page, 'Aurora A.', 'Behaviour');
 		await log(page, 'Aurora A.', 'Behaviour');
 		await log(page, 'Dario A.', 'Homework');
+		// Wait until the last write is visible before reloading, as a person would.
+		await expect(badge(page, 'Dario A.', 'Homework')).toHaveAccessibleName(/Homework: 1,/);
 		await page.reload();
 		await expect(badge(page, 'Aurora A.', 'Behaviour')).toHaveAccessibleName(/Behaviour: 2,/);
 		await expect(badge(page, 'Dario A.', 'Homework')).toHaveAccessibleName(/Homework: 1,/);
