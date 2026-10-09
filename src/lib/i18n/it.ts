@@ -85,7 +85,7 @@ export const it: Messages = {
 	sheet: {
 		title: 'Segna per {student}',
 		next: '{category} – prossimo: {action}',
-		nextOnly: 'Prossimo: {action}',
+		nextLabel: 'Prossimo',
 		inWindow: '{count} negli ultimi {window}'
 	},
 	toast: {

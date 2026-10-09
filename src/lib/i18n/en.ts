@@ -82,7 +82,7 @@ export const en = {
 	sheet: {
 		title: 'Log for {student}',
 		next: '{category} – next: {action}',
-		nextOnly: 'Next: {action}',
+		nextLabel: 'Next',
 		inWindow: '{count} in the last {window}'
 	},
 	toast: {

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { LIMITS, previewNext, type CategoryId, type Student } from '../domain';
-	import { actionLabel, categoryLabel, levelLetter, t } from '../i18n';
+	import { actionLabel, categoryLabel, t } from '../i18n';
 	import { app } from '../state';
-	import { actionIcons, categoryIcons } from './iconMaps';
+	import ActionChip from './ActionChip.svelte';
+	import { categoryIcons } from './iconMaps';
 	import { XIcon } from './icons';
 	import Sheet from './Sheet.svelte';
 
@@ -40,25 +41,21 @@
 				{@const events = app.studentEvents(shown.id)}
 				{@const next = previewNext(events, shown.id, cat, app.now)}
 				{@const CategoryIcon = categoryIcons[cat.id]}
-				{@const ActionIcon = actionIcons[next.action]}
 				<button
 					type="button"
-					class="level-{next.action} cat-{cat.id} cat-edge flex min-h-[4.75rem] w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left"
+					class="cat-card cat-{cat.id} flex min-h-[4.75rem] w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left"
 					aria-label={t('sheet.next', {
 						category: categoryLabel(cat, t),
 						action: actionLabel(next.action, t)
 					})}
 					onclick={() => onlog(cat.id)}
 				>
-					<span class="cat-tile size-12"><CategoryIcon size={28} /></span>
+					<CategoryIcon size={30} />
 					<span class="min-w-0 flex-1">
 						<span class="block truncate text-lg font-bold">{categoryLabel(cat, t)}</span>
-						<span class="flex items-center gap-1 text-sm font-semibold">
-							<ActionIcon size={16} class="shrink-0" />
-							<span>{t('sheet.nextOnly', { action: actionLabel(next.action, t) })}</span>
-							<span class="rounded bg-white/70 px-1 text-xs font-bold">
-								{levelLetter(next.action, t)}
-							</span>
+						<span class="mt-1 flex items-center gap-2 text-sm font-semibold">
+							{t('sheet.nextLabel')}
+							<ActionChip action={next.action} />
 						</span>
 						<span class="block text-xs">
 							{t('sheet.inWindow', {

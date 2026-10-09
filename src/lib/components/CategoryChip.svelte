@@ -10,8 +10,8 @@
 </script>
 
 <span
-	class="cat-{category} inline-flex items-center gap-1.5 rounded-lg border-2 border-[var(--cat)] bg-white py-0.5 pr-2 pl-0.5 text-sm font-bold text-ink"
+	class="cat-{category} cat-card inline-flex items-center gap-1.5 rounded-lg border-2 px-2 py-0.5 text-sm font-bold"
 >
-	<span class="cat-tile size-6"><Icon size={16} /></span>
+	<Icon size={16} />
 	{categoryLabel(app.category(category), t)}
 </span>
