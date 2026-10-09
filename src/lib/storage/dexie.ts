@@ -204,6 +204,10 @@ export function createDexieRepository(deps: DexieRepositoryDeps = {}): Repositor
 			return rows.filter((e) => matchesEvent(e, filter)).sort(compareEvents);
 		},
 
+		async getEvent(id: string) {
+			return db.events.get(id);
+		},
+
 		async addEvent(input: NewEvent) {
 			const e = await db.transaction(
 				'rw',

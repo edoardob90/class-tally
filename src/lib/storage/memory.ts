@@ -135,6 +135,11 @@ export function createMemoryRepository(deps?: RepositoryDeps): Repository {
 			return copy([...events.values()].filter((e) => matchesEvent(e, filter)).sort(compareEvents));
 		},
 
+		async getEvent(id: string) {
+			const e = events.get(id);
+			return e ? copy(e) : undefined;
+		},
+
 		async addEvent(input: NewEvent) {
 			if (!classes.has(input.classId)) throw new NotFoundError('class', input.classId);
 			if (!students.has(input.studentId)) throw new NotFoundError('student', input.studentId);

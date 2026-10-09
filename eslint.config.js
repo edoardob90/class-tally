@@ -14,6 +14,10 @@ export default defineConfig(
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts'],
-		languageOptions: { parserOptions: { parser: ts.parser } }
+		languageOptions: { parserOptions: { parser: ts.parser } },
+		rules: {
+			// Our Map and Date instances are local values or caches, never reactive state.
+			'svelte/prefer-svelte-reactivity': 'off'
+		}
 	}
 );

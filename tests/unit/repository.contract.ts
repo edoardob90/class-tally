@@ -292,6 +292,13 @@ export function runRepositoryContract(name: string, factory: RepositoryFactory):
 				expect(stored).toMatchObject({ action: e1.action, countAtCreation: e1.countAtCreation });
 			});
 
+			it('gets one event by id, or undefined', async () => {
+				const { repo, time } = setup(factory);
+				const { e1 } = await seed(repo, time);
+				expect(await repo.getEvent(e1.id)).toEqual(e1);
+				expect(await repo.getEvent('missing')).toBeUndefined();
+			});
+
 			it('deletes an event for undo, ignoring unknown ids', async () => {
 				const { repo, time } = setup(factory);
 				const { e1 } = await seed(repo, time);

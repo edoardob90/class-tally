@@ -12,7 +12,7 @@ Requirements: `docs/spec.md` (single source of truth).
 - Lint and format check: `npm run lint` (fix with `npm run format`)
 - Type check: `npm run check`
 - Unit tests: `npm test`
-- E2E tests: `npm run test:e2e` (builds first, iPhone-sized viewport)
+- E2E tests: `npm run test:e2e` (builds first, iPhone-sized viewport). In the cloud sandbox set `PW_CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome` first
 
 ## Conventions
 

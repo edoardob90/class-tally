@@ -30,6 +30,7 @@ export interface Repository {
 
 	/** Events sorted by creation time (then id). Voided events are included unless excluded. */
 	listEvents(filter?: EventFilter): Promise<TallyEvent[]>;
+	getEvent(id: string): Promise<TallyEvent | undefined>;
 	addEvent(input: NewEvent): Promise<TallyEvent>;
 	/** All patches are applied in one transaction, or none is. */
 	patchEvents(patches: readonly { id: string; patch: EventPatch }[]): Promise<TallyEvent[]>;

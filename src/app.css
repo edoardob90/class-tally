@@ -1,1 +1,165 @@
 @import 'tailwindcss';
+
+@theme {
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--color-ink: #0f172a;
+	--color-muted: #475569;
+	--color-surface: #ffffff;
+	--color-canvas: #f1f5f9;
+	--color-line: #cbd5e1;
+	--color-accent: #1d4ed8;
+	--color-accent-ink: #ffffff;
+	--height-nav: 4rem;
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+		text-size-adjust: 100%;
+		color-scheme: light;
+	}
+
+	body {
+		margin: 0;
+		background: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		line-height: 1.35;
+		overscroll-behavior-y: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	button,
+	a,
+	summary,
+	label,
+	select {
+		touch-action: manipulation;
+	}
+
+	button {
+		cursor: pointer;
+		font: inherit;
+	}
+
+	/* 16px or more stops iOS Safari from zooming when a field gets focus. */
+	input,
+	textarea,
+	select {
+		font: inherit;
+		font-size: 16px;
+		color: inherit;
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+
+	dialog {
+		color: inherit;
+	}
+}
+
+@layer components {
+	.btn {
+		display: inline-flex;
+		min-height: 2.75rem;
+		min-width: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		border-radius: 0.75rem;
+		border: 1px solid var(--color-line);
+		background: var(--color-surface);
+		padding: 0.5rem 0.9rem;
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+
+	.btn:disabled {
+		opacity: 0.5;
+	}
+
+	.btn-primary {
+		border-color: var(--color-accent);
+		background: var(--color-accent);
+		color: var(--color-accent-ink);
+	}
+
+	.btn-danger {
+		border-color: #b91c1c;
+		background: #b91c1c;
+		color: #fff;
+	}
+
+	.field {
+		min-height: 2.75rem;
+		width: 100%;
+		border-radius: 0.75rem;
+		border: 1px solid var(--color-line);
+		background: var(--color-surface);
+		padding: 0.5rem 0.75rem;
+	}
+
+	.card {
+		border-radius: 1rem;
+		border: 1px solid var(--color-line);
+		background: var(--color-surface);
+		padding: 0.9rem;
+	}
+
+	/* Escalation levels: colour plus a letter and an icon, never colour alone. */
+	.level-verbal {
+		background: #e0f2fe;
+		border-color: #7dd3fc;
+		color: #0c4a6e;
+	}
+
+	.level-register {
+		background: #fef3c7;
+		border-color: #f59e0b;
+		color: #78350f;
+	}
+
+	.level-note {
+		background: #fee2e2;
+		border-color: #ef4444;
+		color: #7f1d1d;
+	}
+
+	.level-none {
+		background: transparent;
+		border-color: transparent;
+		color: var(--color-muted);
+	}
+
+	dialog.sheet {
+		margin: auto 0 0 0;
+		width: 100%;
+		max-width: 32rem;
+		max-height: 90dvh;
+		border: 0;
+		border-radius: 1.25rem 1.25rem 0 0;
+		padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+		background: var(--color-surface);
+		/* centred on wide screens */
+		inset-inline: 0;
+		margin-inline: auto;
+	}
+
+	dialog.top-sheet {
+		margin: 0.75rem auto auto auto;
+		width: calc(100% - 1.5rem);
+		max-width: 32rem;
+		border: 0;
+		border-radius: 1.25rem;
+		padding: 1rem;
+		background: var(--color-surface);
+		margin-top: calc(env(safe-area-inset-top) + 0.75rem);
+	}
+
+	dialog::backdrop {
+		background: rgb(15 23 42 / 0.45);
+	}
+}

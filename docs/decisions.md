@@ -11,7 +11,7 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 ## D-02 Students have `name` and `surname`; `label` stays stored
 
 - Context: the owner's roster files use `name` as "Surname Given-name" (e.g. "Acacia Davide"); the grid should show "Name + Surname initial".
-- Choice: `Student` gains `name` and `surname` (additive to the spec model). `label` remains a stored field, generated as "Davide A." (longer initial on collisions) and regenerated when name or surname change unless the user set it by hand. Roster import splits at the first space (first token is the surname); the preview allows editing and swapping. `id` and `weight` of the roster are ignored.
+- Choice: `Student` gains `name` and `surname` (additive to the spec model). `label` remains a stored field, generated as "Davide A." (longer initial on collisions) and regenerated when name or surname change (hand-editing the label is not offered). Roster import splits at the first space (first token is the surname); the preview allows editing and swapping. `id` and `weight` of the roster are ignored.
 - Discarded: computing the label on the fly (breaks the spec model, CSV and sync).
 
 ## D-03 Student sort order
@@ -134,3 +134,20 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 ## D-30 UUID fallback
 
 - Choice: `crypto.randomUUID` needs a secure context, so a `getRandomValues` fallback is used (plain-HTTP LAN testing on a phone).
+
+## D-31 Relative imports, trailing slashes
+
+- Context: SvelteKit 3 no longer provides the `$lib` alias by default (subpath imports do not resolve directory indexes for TypeScript).
+- Choice: relative imports; `trailingSlash = 'always'` so every route is built as `<route>/index.html`, which any static host (GitHub Pages, Cloudflare Pages, nginx) serves without rewrite rules.
+
+## D-32 Optimistic toast, authoritative snapshot
+
+- Choice: the toast appears at once, computed from the cached events; the service recomputes the snapshot from the stored events and the toast text is corrected if they differ. The event list reloads from the repository after every change.
+
+## D-33 Sheets use the native `<dialog>`
+
+- Choice: bottom sheets and the note editor are native dialogs (focus trap, Escape, backdrop). The note editor sits at the top of the screen so the iOS keyboard does not cover it.
+
+## D-34 E2E browser
+
+- Choice: Playwright runs the iPhone 14 profile on Chromium locally (WebKit is not installed in the sandbox); CI also runs a WebKit project that may fail without blocking until it has been seen green.

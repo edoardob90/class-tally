@@ -25,16 +25,16 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 ## M2 – Localization and logging flow
 
-- [ ] i18n layer: `en.ts`, `Messages`, `it.ts`, `translate.ts`, `index.ts`, typed `t()`, locale store
-- [ ] i18n tests (parity, plurals, interpolation, switching) and guard tests (no hard-coded text, no em dash)
-- [ ] App shell: Tailwind tokens, safe areas, navigation with badge, settings gate
-- [ ] State stores and services
-- [ ] Classes: create, rename, archive, switcher; students: add, rename, deactivate
-- [ ] Roster import screen with preview
-- [ ] Student grid with badges and category sheet
-- [ ] Logging with toast: undo, add note, quick phrases
-- [ ] Minimal Settings with language switch
-- [ ] Playwright e2e for the logging flow; `ci.yml` runs e2e
+- [x] i18n layer: `en.ts`, `Messages`, `it.ts`, `translate.ts`, `index.ts`, typed `t()`, locale store
+- [x] i18n tests (parity, plurals, interpolation, switching) and guard tests (no hard-coded text, no em dash)
+- [x] App shell: Tailwind tokens, safe areas, navigation with badge, settings gate
+- [x] State stores and services
+- [x] Classes: create, rename, archive, switcher; students: add, rename, deactivate
+- [x] Roster import screen with preview
+- [x] Student grid with badges and category sheet
+- [x] Logging with toast: undo, add note, quick phrases
+- [x] Minimal Settings with language switch
+- [x] Playwright e2e for the logging flow; `ci.yml` runs e2e
 
 ## M3 – Summary and history
 
