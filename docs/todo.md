@@ -9,7 +9,7 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 ## Setup
 
 - [x] First commit: `.gitignore`, `CLAUDE.md`, `docs/` (spec moved, todo, progress, decisions, architecture)
-- [ ] Scaffold: config files, scripts, lockfile, empty shell route, `ci.yml` (lint, check, unit, build)
+- [x] Scaffold: config files, scripts, lockfile, empty shell route, `ci.yml` (lint, check, unit, build)
 
 ## M1 – Domain core and storage
 
