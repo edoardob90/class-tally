@@ -29,7 +29,8 @@ export const it: Messages = {
 		toTranscribe: 'Da trascrivere', // glossary
 		history: 'Storico',
 		settings: 'Impostazioni',
-		badge: { one: '{count} voce da trascrivere', other: '{count} voci da trascrivere' }
+		badge: { one: '{count} voce da trascrivere', other: '{count} voci da trascrivere' },
+		update: 'Aggiornamento disponibile'
 	},
 	categories: {
 		behaviour: 'Comportamento', // glossary
@@ -295,6 +296,13 @@ export const it: Messages = {
 				integrity: 'Il file rimanda a record che mancano.',
 				failed: 'Importazione non riuscita.'
 			}
+		},
+		app: {
+			title: 'App',
+			offlineReady: 'Pronta per l’uso senza rete.',
+			offlineNotReady: 'L’uso senza rete non è ancora pronto. Apri l’app una volta con la rete.',
+			updateReady: 'È pronta una nuova versione.',
+			apply: 'Ricarica per aggiornare'
 		},
 		storage: {
 			title: 'Memoria',

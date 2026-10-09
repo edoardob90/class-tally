@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { t } from '../i18n';
-	import { app } from '../state';
+	import { app, pwa } from '../state';
 	import { CalendarClockIcon, ClipboardListIcon, SettingsIcon, UsersIcon } from './icons';
 
 	const items = [
@@ -39,6 +39,13 @@
 				>
 					<Icon size={24} />
 					<span>{t(item.key)}</span>
+					{#if item.path === '/settings' && pwa.updateReady}
+						<span
+							class="absolute top-2 left-1/2 ml-3 size-3 rounded-full bg-red-700"
+							role="img"
+							aria-label={t('nav.update')}
+						></span>
+					{/if}
 					{#if item.path === '/transcribe' && app.pendingCount > 0}
 						<span
 							class="absolute top-1.5 left-1/2 ml-2 min-w-5 rounded-full bg-red-700 px-1.5 text-center text-xs leading-5 font-bold text-white"

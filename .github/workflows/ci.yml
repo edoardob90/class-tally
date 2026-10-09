@@ -29,8 +29,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium webkit
-      - name: End-to-end tests (iPhone viewport, Chromium)
+      - name: End-to-end tests (iPhone viewport, Chromium, served at the domain root)
         run: npx playwright test --project=iphone-chromium
+      - name: End-to-end tests (served under a sub-path, as on GitHub Pages)
+        run: npx playwright test --project=iphone-chromium
+        env:
+          BASE_PATH: /class-tally
       - name: End-to-end tests (iPhone, WebKit)
         run: npx playwright test --project=iphone-webkit
         env:

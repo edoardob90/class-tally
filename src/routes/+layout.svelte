@@ -4,13 +4,14 @@
 	import NavBar from '../lib/components/NavBar.svelte';
 	import ToastHost from '../lib/components/ToastHost.svelte';
 	import { t } from '../lib/i18n';
-	import { app } from '../lib/state';
+	import { app, pwa } from '../lib/state';
 	import { getRepository } from '../lib/storage/browser';
 
 	let { children } = $props();
 
 	onMount(() => {
 		void app.init(getRepository());
+		void pwa.register();
 	});
 </script>
 

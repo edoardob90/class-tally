@@ -27,7 +27,8 @@ export const en = {
 		toTranscribe: 'To transcribe',
 		history: 'History',
 		settings: 'Settings',
-		badge: { one: '{count} item to transcribe', other: '{count} items to transcribe' }
+		badge: { one: '{count} item to transcribe', other: '{count} items to transcribe' },
+		update: 'Update available'
 	},
 	categories: {
 		behaviour: 'Behaviour',
@@ -286,6 +287,13 @@ export const en = {
 				integrity: 'The file refers to records that are missing.',
 				failed: 'Import failed.'
 			}
+		},
+		app: {
+			title: 'App',
+			offlineReady: 'Ready for offline use.',
+			offlineNotReady: 'Offline use is not ready yet. Open the app once while online.',
+			updateReady: 'A new version is ready.',
+			apply: 'Reload to update'
 		},
 		storage: {
 			title: 'Storage',

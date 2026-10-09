@@ -35,7 +35,7 @@ Voiding an event recomputes the later events of the same student and category th
 
 1. Open the app's HTTPS address in Safari.
 2. Tap Share, then "Add to Home Screen", then Add.
-3. Open the app once from the new icon while online and wait a few seconds, so that it can store itself for offline use.
+3. Open the app once from the new icon while online and wait a few seconds, so that it can store itself for offline use. Settings, App, says "Ready for offline use" when it has.
 4. From then on, always open it from the icon.
 
 An app installed to the home screen has its own storage, separate from Safari tabs. Data entered in a Safari tab is not visible in the installed app, and removing the icon deletes the installed app's data. Keep a backup (below).
@@ -55,6 +55,8 @@ npm test          # unit tests (Vitest)
 npm run test:e2e  # end-to-end tests (Playwright, iPhone-sized viewport)
 ```
 
+The end-to-end suite also covers the manifest, the service worker and offline use. Run it a second time with `BASE_PATH=/class-tally npm run test:e2e` to check the sub-path build, as CI does.
+
 Notes:
 
 - End-to-end tests build the app and serve it with `vite preview`. Install a browser once with `npx playwright install chromium`. In an environment that already has a Chromium, point `PW_CHROMIUM_PATH` at its executable.
@@ -72,7 +74,7 @@ One-time steps:
 1. In the repository, open Settings, Pages, and under "Build and deployment" choose Source: "GitHub Actions". (For a private repository this needs a plan that includes Pages. The published site is public but contains code only, never data.)
 2. Merge to `main`. The workflow builds with `BASE_PATH=/<repository-name>` and publishes with the official Pages actions. The address appears in the workflow run and in Settings, Pages: `https://<user>.github.io/class-tally/`.
 3. If the deployment is refused because of the environment, open Settings, Environments, `github-pages`, and make sure `main` is an allowed deployment branch.
-4. Custom domain (optional): Settings, Pages, Custom domain, plus a DNS `CNAME` record. Then the app is served at the root, so set the repository variable `PAGES_BASE_PATH` to an empty value.
+4. Custom domain (optional): Settings, Pages, Custom domain, plus a DNS `CNAME` record. The workflow asks GitHub for the base path (`configure-pages`), so it builds for the domain root automatically.
 
 ### Your own subdomain on a VPS (for example `tally.example.org`)
 
@@ -104,6 +106,10 @@ Connect the repository in the Cloudflare dashboard. Build command `npm run build
 ### Moving between addresses
 
 Browser storage belongs to one address. If you change the address (for example from GitHub Pages to your own domain) the new app starts empty: export a backup on the old address and import it on the new one.
+
+## Updates
+
+A new version is downloaded in the background and waits: the app never changes under you while it is open. When it is ready, a dot appears on the Settings tab and Settings, App, offers "Reload to update". Your data is kept across updates.
 
 ## Backups
 

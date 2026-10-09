@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AppSection from '../../lib/components/AppSection.svelte';
 	import BackupSection from '../../lib/components/BackupSection.svelte';
 	import CategoryEditor from '../../lib/components/CategoryEditor.svelte';
 	import DeleteSection from '../../lib/components/DeleteSection.svelte';
@@ -43,6 +44,7 @@
 		</div>
 	</section>
 
+	<AppSection />
 	<BackupSection />
 	<StorageSection />
 	<DeleteSection />

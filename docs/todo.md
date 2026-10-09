@@ -59,13 +59,13 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 ## M5 – PWA and deployment
 
-- [ ] Manifest, icons, iOS meta tags
-- [ ] Native service worker, registration, update row
-- [ ] Offline e2e, base-path e2e (root and `/class-tally`)
-- [ ] `deploy.yml` (GitHub Pages)
-- [ ] README: GitHub Pages, Cloudflare Pages, VPS subdomain
-- [ ] `scripts/deploy-vps.sh`
+- [x] Manifest, icons, iOS meta tags
+- [x] Native service worker, registration, update row
+- [x] Offline e2e, base-path e2e (root and `/class-tally`)
+- [x] `deploy.yml` (GitHub Pages)
+- [x] README: GitHub Pages, Cloudflare Pages, VPS subdomain
+- [x] `scripts/deploy-vps.sh`
 
 ## Cleanup
 
-- [ ] Kickoff files removed, everything documented in README and `docs/`
+- [x] Kickoff files removed, everything documented in README and `docs/`
