@@ -43,14 +43,14 @@
 				{@const ActionIcon = actionIcons[next.action]}
 				<button
 					type="button"
-					class="level-{next.action} flex min-h-[4.75rem] w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left"
+					class="level-{next.action} cat-{cat.id} cat-edge flex min-h-[4.75rem] w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left"
 					aria-label={t('sheet.next', {
 						category: categoryLabel(cat, t),
 						action: actionLabel(next.action, t)
 					})}
 					onclick={() => onlog(cat.id)}
 				>
-					<CategoryIcon size={28} />
+					<span class="cat-tile size-12"><CategoryIcon size={28} /></span>
 					<span class="min-w-0 flex-1">
 						<span class="block truncate text-lg font-bold">{categoryLabel(cat, t)}</span>
 						<span class="flex items-center gap-1 text-sm font-semibold">

@@ -134,6 +134,34 @@
 		color: var(--color-muted);
 	}
 
+	/* One accent colour per category, in hues the escalation levels (blue, amber, red) do not use. */
+	.cat-behaviour {
+		--cat: #6d28d9;
+	}
+
+	.cat-homework {
+		--cat: #0f766e;
+	}
+
+	.cat-materials {
+		--cat: #a21caf;
+	}
+
+	.cat-tile {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.6rem;
+		background: var(--cat);
+		color: #fff;
+	}
+
+	.cat-edge {
+		border-left-width: 10px;
+		border-left-color: var(--cat);
+	}
+
 	dialog.sheet {
 		margin: auto 0 0 0;
 		width: 100%;

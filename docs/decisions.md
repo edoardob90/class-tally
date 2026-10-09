@@ -191,3 +191,8 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 
 - Context: SvelteKit requires the worker to be excluded from the main tsconfig, and the separate `tsconfig.service-worker.json` is only used by `npm run check`. Editors (found in Zed) that pick the nearest `tsconfig.json` checked the file with no SvelteKit or WebWorker types and showed 11 errors.
 - Choice: triple-slash references in the file itself (`lib="webworker"`, `types="@sveltejs/kit"`, as in the SvelteKit docs), and the worker takes its base path from `self.registration.scope` instead of `$app/paths`, so it does not depend on generated route types. Verified with `tsc --ignoreConfig --strict` on the file alone, plus the usual checks and the offline e2e tests at both base paths.
+
+## D-44 Category accent colours
+
+- Context: the category sheet tinted each card by the escalation level, so two categories at the same level (e.g. Homework and Materials) differed only by their icon.
+- Choice: each category has its own accent colour in hues the levels do not use: violet (Behaviour), teal (Homework), magenta (Materials). It appears as a solid icon tile, and as a thick left edge on the category sheet cards, an outlined chip in event rows and a small tile in the grid badges. The card tint keeps showing the level. Colours stay secondary to the icon and the name, so colour is never the only carrier of meaning.

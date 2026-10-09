@@ -26,9 +26,9 @@
 		count,
 		action: actionLabel(next, t)
 	})}
-	class="level-{level} inline-flex items-center gap-1 rounded-lg border px-1.5 py-0.5 text-sm leading-5"
+	class="level-{level} cat-{cat.id} inline-flex items-center gap-1 rounded-lg border py-0.5 pr-1.5 pl-0.5 text-sm leading-5"
 >
-	<Icon size={14} />
+	<span class="cat-tile size-5"><Icon size={13} /></span>
 	<span class="font-bold tabular-nums">{count}</span>
 	{#if count > 0}
 		<span class="rounded bg-white/70 px-1 text-xs font-bold">{levelLetter(next, t)}</span>

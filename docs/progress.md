@@ -83,6 +83,7 @@ _State at the end of the session (see the log below for details)._
 - D-41 tiered event layout with distinct chips, status pills in colours no level uses
 - D-42 storage protection explained on screen
 - D-43 service worker type-checks cleanly in any editor
+- D-44 per-category accent colours (violet, teal, magenta) next to the level colours
 
 ## Log
 
