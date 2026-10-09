@@ -201,3 +201,9 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 
 - Context: exports were named by day only (`class-tally-backup-2026-10-09.json`), so a second export on the same day replaced the first one in Files or Downloads.
 - Choice: local date and time to the second, `class-tally-backup-2026-10-09_14-32-05.json` and `class-tally-events-2026-10-09_14-32-05.csv`. Hyphens and an underscore only, so the name is valid on every file system and sorts chronologically. Requested by the owner.
+
+## D-46 Tab state kept for the session
+
+- Context: each route kept its filters in component state, so switching tabs reset History (mode, class, student, category, range) and closed the Settings sections. Requested by the owner.
+- Choice: a session-only UI store (`src/lib/state/ui.svelte.ts`) holds the History filters and the open Settings sections. It lives in memory: switching tabs keeps it, relaunching the app starts fresh. Nothing is written to storage or backups. A `?student=` link still selects that student. While the date range is untouched it follows the current day (last 7 days), so a long-lived session does not stay on yesterday's range. Unsaved edits inside a category form are not kept (the form reloads the stored values).
+- Discarded: SvelteKit snapshots (they restore on history back and forward, not on tab links); `localStorage` (filters from an old session are more confusing than helpful).

@@ -10,23 +10,29 @@
 		dayRangeBounds,
 		isDayKey,
 		sortStudents,
-		type CategoryId,
 		type TallyEvent
 	} from '../../lib/domain';
 	import { categoryLabel, dayHeading, nameCollator, quickNotesFor, t } from '../../lib/i18n';
 	import { groupByDay, setEventNote, voidEvent } from '../../lib/services';
-	import { app, toast } from '../../lib/state';
+	import { app, toast, ui } from '../../lib/state';
 
 	const today = dayKey(Date.now());
 	const initialStudent = page.url.searchParams.get('student');
 	const startStudent = app.students.find((s) => s.id === initialStudent);
 
-	let mode = $state<'student' | 'class'>('student');
-	let classId = $state(startStudent?.classId ?? app.currentClass?.id ?? '');
-	let studentId = $state(startStudent?.id ?? '');
-	let category = $state<'all' | CategoryId>('all');
-	let fromKey = $state(addDaysToKey(today, -6));
-	let toKey = $state(today);
+	// Filters live in the session UI store so they survive switching tabs. A student link wins.
+	const f = ui.history;
+	if (startStudent) {
+		f.mode = 'student';
+		f.classId = startStudent.classId;
+		f.studentId = startStudent.id;
+	} else if (!app.classes.some((c) => c.id === f.classId)) {
+		f.classId = app.currentClass?.id ?? app.classes[0]?.id ?? '';
+	}
+	if (!f.rangeSet) {
+		f.fromKey = addDaysToKey(today, -6);
+		f.toKey = today;
+	}
 
 	let voidTarget = $state.raw<TallyEvent | null>(null);
 	let noteTarget = $state.raw<TallyEvent | null>(null);
@@ -36,17 +42,17 @@
 	// Students of the class, including hidden ones: their history stays reachable.
 	const classStudents = $derived(
 		sortStudents(
-			app.students.filter((s) => s.classId === classId),
+			app.students.filter((s) => s.classId === f.classId),
 			nameCollator()
 		)
 	);
-	const validStudent = $derived(classStudents.some((s) => s.id === studentId) ? studentId : '');
+	const validStudent = $derived(classStudents.some((s) => s.id === f.studentId) ? f.studentId : '');
 
 	const studentGroups = $derived.by(() => {
 		if (!validStudent) return [];
 		const events = app.events.filter((e) => e.studentId === validStudent);
 		return app.categories
-			.filter((c) => category === 'all' || c.id === category)
+			.filter((c) => f.category === 'all' || c.id === f.category)
 			.map((cat) => ({
 				cat,
 				events: events.filter((e) => e.category === cat.id).sort((a, b) => compareEvents(b, a))
@@ -55,11 +61,11 @@
 	});
 
 	const classDays = $derived.by(() => {
-		if (!isDayKey(fromKey) || !isDayKey(toKey)) return [];
-		const { from, to } = dayRangeBounds(fromKey, toKey);
+		if (!isDayKey(f.fromKey) || !isDayKey(f.toKey)) return [];
+		const { from, to } = dayRangeBounds(f.fromKey, f.toKey);
 		const events = app.events
-			.filter((e) => e.classId === classId)
-			.filter((e) => category === 'all' || e.category === category)
+			.filter((e) => e.classId === f.classId)
+			.filter((e) => f.category === 'all' || e.category === f.category)
 			.filter((e) => {
 				const at = Date.parse(e.createdAt);
 				return at >= from && at < to;
@@ -69,8 +75,9 @@
 	});
 
 	function preset(days: number) {
-		toKey = today;
-		fromKey = addDaysToKey(today, -(days - 1));
+		f.toKey = today;
+		f.fromKey = addDaysToKey(today, -(days - 1));
+		f.rangeSet = true;
 	}
 
 	async function confirmVoid(event: TallyEvent) {
@@ -116,17 +123,17 @@
 	<div class="mb-3 grid grid-cols-2 gap-2" role="group" aria-label={t('history.title')}>
 		<button
 			type="button"
-			class="btn {mode === 'student' ? 'btn-primary' : ''}"
-			aria-pressed={mode === 'student'}
-			onclick={() => (mode = 'student')}
+			class="btn {f.mode === 'student' ? 'btn-primary' : ''}"
+			aria-pressed={f.mode === 'student'}
+			onclick={() => (f.mode = 'student')}
 		>
 			{t('history.byStudent')}
 		</button>
 		<button
 			type="button"
-			class="btn {mode === 'class' ? 'btn-primary' : ''}"
-			aria-pressed={mode === 'class'}
-			onclick={() => (mode = 'class')}
+			class="btn {f.mode === 'class' ? 'btn-primary' : ''}"
+			aria-pressed={f.mode === 'class'}
+			onclick={() => (f.mode = 'class')}
 		>
 			{t('history.byClass')}
 		</button>
@@ -135,17 +142,17 @@
 	<div class="card mb-4 grid gap-2">
 		<label class="text-sm font-semibold">
 			{t('history.class')}
-			<select class="field mt-1" bind:value={classId}>
+			<select class="field mt-1" bind:value={f.classId}>
 				{#each app.classes as cls (cls.id)}
 					<option value={cls.id}>{cls.name}</option>
 				{/each}
 			</select>
 		</label>
 
-		{#if mode === 'student'}
+		{#if f.mode === 'student'}
 			<label class="text-sm font-semibold">
 				{t('history.student')}
-				<select class="field mt-1" bind:value={studentId}>
+				<select class="field mt-1" bind:value={f.studentId}>
 					<option value="">{t('history.pickStudent')}</option>
 					{#each classStudents as student (student.id)}
 						<option value={student.id}>{student.label}</option>
@@ -156,11 +163,21 @@
 			<div class="grid grid-cols-2 gap-2">
 				<label class="text-sm font-semibold">
 					{t('history.from')}
-					<input type="date" class="field mt-1" bind:value={fromKey} />
+					<input
+						type="date"
+						class="field mt-1"
+						bind:value={f.fromKey}
+						onchange={() => (f.rangeSet = true)}
+					/>
 				</label>
 				<label class="text-sm font-semibold">
 					{t('history.to')}
-					<input type="date" class="field mt-1" bind:value={toKey} />
+					<input
+						type="date"
+						class="field mt-1"
+						bind:value={f.toKey}
+						onchange={() => (f.rangeSet = true)}
+					/>
 				</label>
 			</div>
 			<div class="flex flex-wrap gap-2">
@@ -171,7 +188,7 @@
 
 		<label class="text-sm font-semibold">
 			{t('history.category')}
-			<select class="field mt-1" bind:value={category}>
+			<select class="field mt-1" bind:value={f.category}>
 				<option value="all">{t('history.allCategories')}</option>
 				{#each app.categories as cat (cat.id)}
 					<option value={cat.id}>{categoryLabel(cat, t)}</option>
@@ -180,7 +197,7 @@
 		</label>
 	</div>
 
-	{#if mode === 'student'}
+	{#if f.mode === 'student'}
 		{#if !validStudent}
 			<p class="text-muted">{t('history.pickStudent')}</p>
 		{:else if studentGroups.length === 0}

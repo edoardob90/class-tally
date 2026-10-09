@@ -9,7 +9,10 @@ const nav = (page: Page, name: RegExp) => page.getByRole('navigation').getByRole
 async function openCategory(page: Page, name: string) {
 	await nav(page, /Settings/).click();
 	const details = page.locator('details').filter({ hasText: name }).first();
-	await details.locator('summary').click();
+	// Sections stay open across tabs, so only open a closed one.
+	if (!(await details.evaluate((el) => (el as HTMLDetailsElement).open))) {
+		await details.locator('summary').click();
+	}
 	return details;
 }
 
@@ -37,6 +40,23 @@ test.describe('category settings', () => {
 		await expect(badge(page, 'Greta A.', 'Behaviour')).toHaveAccessibleName(/Behaviour: 1,/);
 		await page.clock.fastForward(2 * DAY);
 		await expect(badge(page, 'Greta A.', 'Behaviour')).toHaveAccessibleName(/Behaviour: 0,/);
+	});
+
+	test('keeps open sections when switching tabs', async ({ page }) => {
+		await importRoster(page, smallRoster);
+		const details = await openCategory(page, 'Homework');
+		await expect(details.getByLabel('Rolling window (days)')).toBeVisible();
+		await nav(page, /Class/).click();
+		await nav(page, /Settings/).click();
+		const again = page.locator('details').filter({ hasText: 'Homework' }).first();
+		await expect(again.getByLabel('Rolling window (days)')).toBeVisible();
+		await expect(
+			page
+				.locator('details')
+				.filter({ hasText: 'Behaviour' })
+				.first()
+				.getByLabel('Rolling window (days)')
+		).toBeHidden();
 	});
 
 	test('shows clear messages for an invalid window and an invalid ladder', async ({ page }) => {

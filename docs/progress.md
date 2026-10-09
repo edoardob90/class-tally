@@ -85,6 +85,7 @@ _State at the end of the session (see the log below for details)._
 - D-43 service worker type-checks cleanly in any editor
 - D-44 category colours from Flexoki (purple, green, cyan) as card backgrounds; level colours on their own chip
 - D-45 export file names carry local date and time
+- D-46 History filters and open Settings sections kept across tabs for the session
 
 ## Log
 
@@ -139,3 +140,8 @@ _State at the end of the session (see the log below for details)._
 ### 2026-10-09 – Post-v0 feedback: export file names
 
 - Done: JSON and CSV exports are named with local date and time to the second (`class-tally-backup-2026-10-09_14-32-05.json`), so two exports on the same day no longer overwrite each other (D-45).
+
+### 2026-10-09 – Post-v0 feedback: tab state
+
+- Done: History filters (mode, class, student, category, date range) and the open Settings sections survive switching tabs for the session (D-46).
+- E2E added: History filter kept across Class and To transcribe; open Settings section kept. 30 e2e tests pass.

@@ -151,4 +151,29 @@ test.describe('History and void', () => {
 		await dialog.getByRole('button', { name: 'Save' }).click();
 		await expect(items(page).filter({ hasText: 'Forgot the book' })).toHaveCount(1);
 	});
+
+	test('keeps its filters when switching tabs', async ({ page }) => {
+		await importRoster(page, smallRoster);
+		await log(page, 'Greta A.', 'Behaviour');
+		await log(page, 'Greta A.', 'Homework');
+		await openStudentHistory(page, 'Greta A.');
+		await page.getByLabel('Category').selectOption({ label: 'Homework' });
+		await expect(page.getByRole('heading', { name: 'Behaviour' })).toHaveCount(0);
+
+		await nav(page, /Class/).click();
+		await expect(page.getByRole('button', { name: /^Greta A\./ })).toBeVisible();
+		await nav(page, /History/).click();
+		await expect(page.getByLabel('Student')).toHaveValue(/.+/);
+		await expect(page.getByLabel('Category')).toHaveValue('homework');
+		await expect(page.getByRole('heading', { name: 'Homework' })).toBeVisible();
+		await expect(page.getByRole('heading', { name: 'Behaviour' })).toHaveCount(0);
+
+		await page.getByRole('button', { name: 'By class' }).click();
+		await nav(page, /To transcribe/).click();
+		await nav(page, /History/).click();
+		await expect(page.getByRole('button', { name: 'By class' })).toHaveAttribute(
+			'aria-pressed',
+			'true'
+		);
+	});
 });

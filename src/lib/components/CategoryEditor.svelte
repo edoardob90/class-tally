@@ -9,7 +9,7 @@
 		type Issue
 	} from '../domain';
 	import { actionLabel, categoryLabel, locale, quickNotesFor, t, type LooseTFn } from '../i18n';
-	import { app, toast } from '../state';
+	import { app, toast, ui } from '../state';
 	import { categoryIcons } from './iconMaps';
 	import { PlusIcon, XIcon } from './icons';
 	import Sheet from './Sheet.svelte';
@@ -110,7 +110,11 @@
 	{/each}
 {/snippet}
 
-<details class="card">
+<details
+	class="card"
+	open={ui.openCategories.includes(cat.id)}
+	ontoggle={(event) => ui.setCategoryOpen(cat.id, event.currentTarget.open)}
+>
 	<summary class="flex min-h-11 cursor-pointer items-center gap-2 text-lg font-bold">
 		<Icon size={22} />
 		{categoryLabel(cat, t)}
