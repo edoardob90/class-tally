@@ -26,6 +26,7 @@
 		<button type="button" class="btn justify-self-start" onclick={ask}>
 			{t('settings.storage.request')}
 		</button>
+		<p class="text-sm text-muted">{t('settings.storage.hint')}</p>
 	{:else if persistence === 'unsupported'}
 		<p>{t('settings.storage.unsupported')}</p>
 	{/if}

@@ -176,3 +176,13 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 ## D-40 Export delivery
 
 - Choice: on touch devices exports go through the Web Share API (the reliable way to reach Files on iOS), elsewhere an anchor download. Only the JSON backup resets the backup reminder; the CSV is not a backup.
+
+## D-41 Event layout and status colours
+
+- Context: the owner found the event lines hard to scan, and the "To transcribe" pill looked like the amber "Register entry" chip.
+- Choice: every event is laid out in tiers: student (large, bold), time, then three distinct chips: category (neutral outline with icon), action (level colour, icon, name, letter) and count (dark "No. 2" badge). Notes are quoted below. Status pills use colours that no level uses: dashed indigo with a clipboard icon for "To transcribe", green for "Transcribed", red flag for "Check register", grey for "Voided". Shared components: `ActionChip`, `CategoryChip`, `CountBadge`.
+
+## D-42 Storage protection explained on screen
+
+- Context: `navigator.storage.persist()` is a request the browser answers by its own rules (Chrome: installed, bookmarked or high engagement; Safari: home screen apps). On localhost or in an ordinary tab a "no" is normal.
+- Choice: the denied message says so, and a hint under the button explains who says yes and that backups are the real safety net.

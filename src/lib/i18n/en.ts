@@ -303,7 +303,9 @@ export const en = {
 			unsupported: 'This browser cannot tell whether the data is protected.',
 			request: 'Ask for protection',
 			granted: 'Protection granted.',
-			denied: 'The browser did not grant protection.'
+			denied:
+				'The browser did not grant protection. This is normal for an ordinary tab or localhost.',
+			hint: 'The browser decides by itself. Chrome usually says yes only for installed or bookmarked apps, Safari for apps added to the Home Screen. Regular backups are the real safety net.'
 		},
 		delete: {
 			title: 'Delete all data',

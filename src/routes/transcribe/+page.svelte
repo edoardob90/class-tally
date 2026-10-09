@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { ClipboardListIcon } from '../../lib/components/icons';
-	import { actionIcons, categoryIcons } from '../../lib/components/iconMaps';
-	import { CheckCheckIcon, CheckIcon, FlagIcon, Undo2Icon } from '../../lib/components/icons';
+	import ActionChip from '../../lib/components/ActionChip.svelte';
+	import CategoryChip from '../../lib/components/CategoryChip.svelte';
+	import CountBadge from '../../lib/components/CountBadge.svelte';
 	import {
-		actionLabel,
-		categoryLabel,
-		dayHeading,
-		formatTime,
-		levelLetter,
-		nameCollator,
-		t
-	} from '../../lib/i18n';
+		CheckCheckIcon,
+		CheckIcon,
+		ClipboardListIcon,
+		FlagIcon,
+		Undo2Icon
+	} from '../../lib/components/icons';
+	import { dayHeading, formatTime, nameCollator, t } from '../../lib/i18n';
 	import {
 		buildTranscribeList,
 		clearCheckFlag,
@@ -55,25 +54,14 @@
 
 {#snippet detail(item: SummaryItem)}
 	{@const e = item.event}
-	{@const CategoryIcon = categoryIcons[e.category]}
-	{@const ActionIcon = actionIcons[e.action]}
-	<p class="font-semibold">
-		{t('transcribe.item', {
-			student: item.student,
-			category: categoryLabel(app.category(e.category), t),
-			action: actionLabel(e.action, t)
-		})}
+	<p class="text-lg leading-tight font-bold">{item.student}</p>
+	<p class="text-sm text-muted">{formatTime(e.createdAt)}</p>
+	<p class="mt-1.5 flex flex-wrap items-center gap-1.5">
+		<CategoryChip category={e.category} />
+		<ActionChip action={e.action} />
+		<CountBadge count={e.countAtCreation} />
 	</p>
-	<p class="mt-0.5 flex flex-wrap items-center gap-2 text-sm text-muted">
-		<span>{formatTime(e.createdAt)}</span>
-		<span class="inline-flex items-center gap-1"><CategoryIcon size={14} /></span>
-		<span class="level-{e.action} inline-flex items-center gap-1 rounded-lg border px-1.5">
-			<ActionIcon size={14} />
-			<span class="text-xs font-bold">{levelLetter(e.action, t)}</span>
-		</span>
-		<span>{t('history.count', { count: e.countAtCreation })}</span>
-	</p>
-	{#if e.note}<p class="mt-1 text-sm text-ink">{e.note}</p>{/if}
+	{#if e.note}<p class="mt-2 border-l-4 border-line pl-2 text-sm text-ink">{e.note}</p>{/if}
 {/snippet}
 
 <svelte:head>

@@ -312,7 +312,9 @@ export const it: Messages = {
 			unsupported: 'Questo browser non sa dire se i dati sono protetti.',
 			request: 'Chiedi la protezione',
 			granted: 'Protezione concessa.',
-			denied: 'Il browser non ha concesso la protezione.'
+			denied:
+				'Il browser non ha concesso la protezione. È normale in una scheda qualsiasi o su localhost.',
+			hint: 'Decide il browser. Chrome di solito accetta solo per le app installate o nei preferiti, Safari per le app aggiunte alla schermata Home. Il vero salvagente sono i backup regolari.'
 		},
 		delete: {
 			title: 'Elimina tutti i dati',
