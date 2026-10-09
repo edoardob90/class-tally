@@ -49,5 +49,5 @@ test('switches to Italian without reload and every screen is translated', async 
 
 	// The choice survives a reload.
 	await page.reload();
-	await expect(page.getByRole('button', { name: /Comportamento: 2/ }).first()).toBeVisible();
+	await expect(page.getByRole('img', { name: /Comportamento: 2/ }).first()).toBeVisible();
 });

@@ -32,10 +32,12 @@ jobs:
       - name: End-to-end tests (iPhone viewport, Chromium, served at the domain root)
         run: npx playwright test --project=iphone-chromium
       - name: End-to-end tests (served under a sub-path, as on GitHub Pages)
+        if: success() || failure()
         run: npx playwright test --project=iphone-chromium
         env:
           BASE_PATH: /class-tally
       - name: End-to-end tests (iPhone, WebKit)
+        if: success() || failure()
         run: npx playwright test --project=iphone-webkit
         env:
           E2E_WEBKIT: '1'
