@@ -13,15 +13,15 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 ## M1 – Domain core and storage
 
-- [ ] Types, constants, defaults
-- [ ] `time.ts` (calendar-day window, DST tests under Europe/Rome)
-- [ ] `rules.ts` (count, ladder lookup, preview, snapshot)
-- [ ] `recompute.ts` (void recomputation, `checkRegister`)
-- [ ] `validation.ts` (settings and ladder)
-- [ ] `merge.ts` and `roster.ts` (+ `fixtures/example-roster.json`)
-- [ ] `Repository` interface, memory implementation, Dexie implementation, migrations
-- [ ] Shared repository contract tests (both implementations)
-- [ ] Backup envelope, import/export round trip, CSV serializer
+- [x] Types, constants, defaults
+- [x] `time.ts` (calendar-day window, DST tests under Europe/Rome)
+- [x] `rules.ts` (count, ladder lookup, preview, snapshot)
+- [x] `recompute.ts` (void recomputation, `checkRegister`)
+- [x] `validation.ts` (settings and ladder)
+- [x] `merge.ts` and `roster.ts` (+ `fixtures/example-roster.json`)
+- [x] `Repository` interface, memory implementation, Dexie implementation, migrations
+- [x] Shared repository contract tests (both implementations)
+- [x] Backup envelope, import/export round trip, CSV serializer
 
 ## M2 – Localization and logging flow
 

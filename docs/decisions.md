@@ -116,3 +116,21 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 ## D-26 Removed kickoff files
 
 - `claude-code-prompt.md` was removed in the first commit; its content is captured in `CLAUDE.md`, `docs/todo.md` and this file. The one-line `README.md` is replaced by the real README.
+
+## D-27 Roster files with several classes
+
+- Context: the fixture must hold three classes, while the owner's files hold one class (`{ class, students }`).
+- Choice: the importer accepts one class object, `{ "classes": [ ... ] }`, or an array of class objects, and plain text (one "Surname Name" per line, also "Surname, Name").
+
+## D-28 SvelteKit 3 configuration
+
+- Context: SvelteKit 3 has no `svelte.config.js`; options are passed to `sveltekit()` in `vite.config.ts`. The service worker helpers moved to `$app/manifest` (`immutable`, `assets`, `prerendered`) and `$app/service-worker` (`self`).
+- Choice: `BASE_PATH` is read in `vite.config.ts`; the service worker (M5) uses the new modules.
+
+## D-29 Monotonic `updatedAt`
+
+- Choice: the repository sets `updatedAt` to the current time but at least 1 ms after the record's previous `updatedAt`, so last-write-wins stays meaningful for changes within the same millisecond.
+
+## D-30 UUID fallback
+
+- Choice: `crypto.randomUUID` needs a secure context, so a `getRandomValues` fallback is used (plain-HTTP LAN testing on a phone).
