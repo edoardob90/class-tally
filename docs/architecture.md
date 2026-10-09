@@ -47,10 +47,10 @@ src/
 │   ├── domain/                    types, constants, time, rules, recompute, validation, merge, roster
 │   ├── storage/                   Repository interface, memory + Dexie implementations, backup, csv, migrations
 │   ├── services/                  use cases built on domain + Repository
-│   ├── state/                     Svelte 5 rune stores caching repository data
+│   ├── state/                     Svelte 5 rune stores: app cache, toast, logging flow, service worker state
 │   ├── components/                UI components; components/icons re-exports the Lucide icons in use
-│   ├── i18n/                      en.ts, it.ts, translate.ts, index.ts
-│   └── pwa.ts                     service worker registration and update state
+│   ├── i18n/                      en.ts, it.ts, translate.ts (pure), locale.svelte.ts (reactive store, t()), display.ts, index.ts
+│   └── share.ts, haptics.ts       export delivery (share sheet or download), vibration
 └── routes/                        /, /transcribe, /history, /settings, /classes, /import
 tests/unit  tests/e2e              Vitest and Playwright
 fixtures/example-roster.json       invented names only
