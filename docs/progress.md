@@ -23,7 +23,8 @@ _State at the end of the session (see the log below for details)._
 9. Layout: nothing under the notch or the home indicator, no horizontal scrolling, no zoom when tapping a text field, comfortable one-handed reach, rotate to landscape.
 10. Settings, Language: switch to Italiano and walk every screen: no raw keys, glossary terms correct (Comportamento, Compiti, Materiale, Avviso verbale, Richiamo sul registro, Nota disciplinare, Da trascrivere, Trascritto, Annulla evento). Switch back.
 11. Settings: change a window to 1 day and see counts change; an invalid ladder shows an inline error; reset to defaults; export JSON via the share sheet to Files; export CSV and open it; import with merge and with replace; the backup reminder; storage status; delete all data.
-12. After a new deploy: open the app, bring it to the front again, and look for the dot on the Settings tab and "Reload to update" in Settings, App; after reloading the data is still there.
+12. Tap "?" in a page header: short captions under the explained buttons and notes at the top of each screen; tap again to hide. Relaunch the app: the choice is kept. Switch tabs with a History filter set: it is still there when you come back.
+13. After a new deploy: open the app, bring it to the front again, and look for the dot on the Settings tab and "Reload to update" in Settings, App; after reloading the data is still there.
 
 ### What is done, partial, missing
 
@@ -86,6 +87,7 @@ _State at the end of the session (see the log below for details)._
 - D-44 category colours from Flexoki (purple, green, cyan) as card backgrounds; level colours on their own chip
 - D-45 export file names carry local date and time
 - D-46 History filters and open Settings sections kept across tabs for the session
+- D-47 "?" toggle in every page header: captions on touch, tooltips on hover, remembered on the device
 
 ## Log
 
@@ -145,3 +147,10 @@ _State at the end of the session (see the log below for details)._
 
 - Done: History filters (mode, class, student, category, date range) and the open Settings sections survive switching tabs for the session (D-46).
 - E2E added: History filter kept across Class and To transcribe; open Settings section kept. 30 e2e tests pass.
+
+### 2026-10-09 – Post-v0 feedback: help hints
+
+- Done: "?" toggle in every page header; `Hint` component (caption under the control on touch screens, tooltip on hover and focus with a mouse); notes on the class grid, category sheet, To transcribe, History and the category form; captions on the class switcher, mark done, checked, note, void, reset category and export buttons; English and Italian strings (D-47).
+- Checked with screenshots at the iPhone 14 and a 1200 × 800 desktop viewport.
+- E2E added: toggle on and off, captions on the phone viewport, remembered across reloads. 31 e2e tests pass.
+- Next: manual counter resets, design to agree with the owner first (spec change).

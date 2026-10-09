@@ -74,5 +74,5 @@ Brief (from the kickoff prompt, kept here because the prompt file was removed):
 
 - [x] Export file names with date and time (D-45)
 - [x] Keep tab state (History filters, open Settings sections) when switching tabs (D-46)
-- [ ] "?" toggle with help hints (tooltips on desktop, captions on touch)
+- [x] "?" toggle with help hints (tooltips on desktop, captions on touch) (D-47)
 - [ ] Manual counter resets (per category and all, per student and per class): design to be discussed with the owner

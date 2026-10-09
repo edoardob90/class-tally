@@ -7,6 +7,7 @@ export { default as BookOpenIcon } from '@lucide/svelte/icons/book-open';
 export { default as CalendarClockIcon } from '@lucide/svelte/icons/calendar-clock';
 export { default as CheckCheckIcon } from '@lucide/svelte/icons/check-check';
 export { default as CheckIcon } from '@lucide/svelte/icons/check';
+export { default as CircleQuestionMarkIcon } from '@lucide/svelte/icons/circle-question-mark';
 export { default as ChevronDownIcon } from '@lucide/svelte/icons/chevron-down';
 export { default as ChevronRightIcon } from '@lucide/svelte/icons/chevron-right';
 export { default as ClipboardListIcon } from '@lucide/svelte/icons/clipboard-list';

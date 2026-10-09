@@ -11,6 +11,7 @@
 	import { actionLabel, categoryLabel, locale, quickNotesFor, t, type LooseTFn } from '../i18n';
 	import { app, toast, ui } from '../state';
 	import { categoryIcons } from './iconMaps';
+	import Hint from './Hint.svelte';
 	import { PlusIcon, XIcon } from './icons';
 	import Sheet from './Sheet.svelte';
 
@@ -142,9 +143,11 @@
 			/>
 		</label>
 		{@render problems('category.windowDays')}
+		<Hint text={t('hints.window')} />
 
 		<fieldset class="grid gap-2">
 			<legend class="mb-1 text-sm font-semibold">{t('settings.categories.ladder')}</legend>
+			<Hint text={t('hints.ladder')} />
 			{#each ladder as step, i (i)}
 				<div class="grid grid-cols-[5.5rem_1fr_auto] items-center gap-2">
 					<input
@@ -222,9 +225,11 @@
 		</fieldset>
 
 		<div class="flex flex-wrap justify-between gap-2">
-			<button type="button" class="btn" onclick={() => (confirmReset = true)}>
-				{t('settings.categories.reset')}
-			</button>
+			<Hint text={t('hints.resetCategory')}>
+				<button type="button" class="btn" onclick={() => (confirmReset = true)}>
+					{t('settings.categories.reset')}
+				</button>
+			</Hint>
 			<button type="submit" class="btn btn-primary">{t('settings.categories.save')}</button>
 		</div>
 	</form>

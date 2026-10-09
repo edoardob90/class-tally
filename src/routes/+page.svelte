@@ -2,6 +2,8 @@
 	import { resolve } from '$app/paths';
 	import CategorySheet from '../lib/components/CategorySheet.svelte';
 	import ClassSwitcher from '../lib/components/ClassSwitcher.svelte';
+	import Hint from '../lib/components/Hint.svelte';
+	import HintToggle from '../lib/components/HintToggle.svelte';
 	import { DownloadIcon, PlusIcon, UploadIcon, UsersIcon, XIcon } from '../lib/components/icons';
 	import StudentGrid from '../lib/components/StudentGrid.svelte';
 	import type { CategoryId, Student } from '../lib/domain';
@@ -43,11 +45,14 @@
 {/if}
 
 {#if app.currentClass}
-	<header class="mb-3 flex items-center justify-between gap-2">
-		<ClassSwitcher />
-		<span class="text-sm text-muted">
+	<header class="mb-3 flex items-center gap-2">
+		<Hint text={t('hints.switchClass')} align="start" class="min-w-0">
+			<ClassSwitcher />
+		</Hint>
+		<span class="ml-auto text-sm text-muted">
 			{t('common.students', { count: app.currentStudents.length })}
 		</span>
+		<HintToggle />
 	</header>
 
 	{#if app.currentStudents.length === 0}
@@ -63,12 +68,14 @@
 			</div>
 		</div>
 	{:else}
+		<Hint text={t('hints.grid')} />
 		<StudentGrid students={app.currentStudents} onpick={(student) => (sheetStudent = student)} />
 	{/if}
 
 	<CategorySheet student={sheetStudent} onlog={logFor} onclose={() => (sheetStudent = null)} />
 {:else}
-	<div class="card mt-8 text-center">
+	<div class="flex justify-end"><HintToggle /></div>
+	<div class="card mt-4 text-center">
 		<h1 class="text-xl font-bold">{t('home.noClasses.title')}</h1>
 		<p class="mt-1 text-muted">{t('home.noClasses.body')}</p>
 		<div class="mt-4 flex flex-wrap justify-center gap-2">

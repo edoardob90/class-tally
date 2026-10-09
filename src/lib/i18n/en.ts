@@ -316,6 +316,26 @@ export const en = {
 			done: 'All data deleted.'
 		}
 	},
+	hints: {
+		toggle: 'Show help hints',
+		grid: 'Tap a student to log a warning. Each badge counts the warnings in the rolling window; its colour and letter show what the next warning would be.',
+		switchClass: 'Change class',
+		sheet:
+			'Tap a category to log the warning now. The message that follows lets you undo it or add a note.',
+		transcribe:
+			'Copy these into the official register, then mark them done with the tick, one by one or all at once.',
+		markOne: 'Mark done',
+		checked: 'The register is correct: clear the flag',
+		history:
+			'Pencil: add or edit the note. Void: the event stays listed, struck through, and no longer counts.',
+		editNote: 'Note',
+		void: 'Void',
+		window: 'Only warnings from the last N days count towards the ladder.',
+		ladder: 'Each step sets what happens from the Nth warning in the window onwards.',
+		resetCategory: 'Restore the default label, window, ladder and quick notes',
+		exportJson: 'Full backup of this device; it can be imported again',
+		exportCsv: 'All events as a spreadsheet; not a backup'
+	},
 	errors: {
 		generic: 'Something went wrong.',
 		storage: 'Storage is not available in this browser. Data cannot be saved.'

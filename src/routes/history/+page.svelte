@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import EventRow from '../../lib/components/EventRow.svelte';
+	import Hint from '../../lib/components/Hint.svelte';
+	import HintToggle from '../../lib/components/HintToggle.svelte';
 	import NoteDialog from '../../lib/components/NoteDialog.svelte';
 	import VoidDialog from '../../lib/components/VoidDialog.svelte';
 	import {
@@ -115,7 +117,11 @@
 	<title>{t('history.title')} · {t('app.name')}</title>
 </svelte:head>
 
-<h1 class="mb-3 text-2xl font-bold">{t('history.title')}</h1>
+<header class="mb-3 flex items-center justify-between gap-2">
+	<h1 class="text-2xl font-bold">{t('history.title')}</h1>
+	<HintToggle />
+</header>
+<Hint text={t('hints.history')} />
 
 {#if app.classes.length === 0}
 	<p class="text-muted">{t('classes.empty')}</p>

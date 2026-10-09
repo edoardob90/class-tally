@@ -4,6 +4,7 @@
 	import ActionChip from './ActionChip.svelte';
 	import CategoryChip from './CategoryChip.svelte';
 	import CountBadge from './CountBadge.svelte';
+	import Hint from './Hint.svelte';
 	import { BanIcon, CheckIcon, ClipboardListIcon, FlagIcon, PencilIcon } from './icons';
 
 	let {
@@ -74,22 +75,26 @@
 		</div>
 		{#if !voided}
 			<div class="flex shrink-0 gap-1">
-				<button
-					type="button"
-					class="btn"
-					aria-label={t('history.editNote')}
-					onclick={() => onnote(event)}
-				>
-					<PencilIcon size={18} />
-				</button>
-				<button
-					type="button"
-					class="btn"
-					aria-label={t('void.action')}
-					onclick={() => onvoid(event)}
-				>
-					<BanIcon size={18} />
-				</button>
+				<Hint text={t('hints.editNote')} align="end">
+					<button
+						type="button"
+						class="btn"
+						aria-label={t('history.editNote')}
+						onclick={() => onnote(event)}
+					>
+						<PencilIcon size={18} />
+					</button>
+				</Hint>
+				<Hint text={t('hints.void')} align="end">
+					<button
+						type="button"
+						class="btn"
+						aria-label={t('void.action')}
+						onclick={() => onvoid(event)}
+					>
+						<BanIcon size={18} />
+					</button>
+				</Hint>
 			</div>
 		{/if}
 	</div>

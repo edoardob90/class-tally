@@ -3,6 +3,7 @@
 	import BackupSection from '../../lib/components/BackupSection.svelte';
 	import CategoryEditor from '../../lib/components/CategoryEditor.svelte';
 	import DeleteSection from '../../lib/components/DeleteSection.svelte';
+	import HintToggle from '../../lib/components/HintToggle.svelte';
 	import StorageSection from '../../lib/components/StorageSection.svelte';
 	import type { Locale } from '../../lib/domain';
 	import { t } from '../../lib/i18n';
@@ -15,7 +16,10 @@
 	<title>{t('settings.title')} · {t('app.name')}</title>
 </svelte:head>
 
-<h1 class="mb-3 text-2xl font-bold">{t('settings.title')}</h1>
+<header class="mb-3 flex items-center justify-between gap-2">
+	<h1 class="text-2xl font-bold">{t('settings.title')}</h1>
+	<HintToggle />
+</header>
 
 <div class="grid gap-4">
 	<section class="card" aria-labelledby="language-heading">

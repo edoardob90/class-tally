@@ -3,6 +3,7 @@
 	import { actionLabel, categoryLabel, t } from '../i18n';
 	import { app } from '../state';
 	import ActionChip from './ActionChip.svelte';
+	import Hint from './Hint.svelte';
 	import { categoryIcons } from './iconMaps';
 	import { XIcon } from './icons';
 	import Sheet from './Sheet.svelte';
@@ -36,7 +37,8 @@
 				<XIcon size={20} />
 			</button>
 		</div>
-		<div class="mt-3 grid gap-2">
+		<div class="mt-2"><Hint text={t('hints.sheet')} /></div>
+		<div class="mt-1 grid gap-2">
 			{#each app.categories as cat (cat.id)}
 				{@const events = app.studentEvents(shown.id)}
 				{@const next = previewNext(events, shown.id, cat, app.now)}
