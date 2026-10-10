@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import HintToggle from '../../lib/components/HintToggle.svelte';
 	import { ArrowLeftRightIcon, UploadIcon, XIcon } from '../../lib/components/icons';
 	import { parseRoster, RosterError, type RosterEntry } from '../../lib/domain';
 	import { t } from '../../lib/i18n';
@@ -114,7 +115,10 @@
 	<title>{t('import.title')} · {t('app.name')}</title>
 </svelte:head>
 
-<h1 class="mb-1 text-2xl font-bold">{t('import.title')}</h1>
+<header class="mb-1 flex items-center justify-between gap-2">
+	<h1 class="text-2xl font-bold">{t('import.title')}</h1>
+	<HintToggle />
+</header>
 <p class="mb-3 text-sm text-muted">{t('import.hint')}</p>
 
 <div class="card grid gap-2">

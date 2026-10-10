@@ -325,6 +325,26 @@ export const it: Messages = {
 			done: 'Tutti i dati sono stati eliminati.'
 		}
 	},
+	hints: {
+		toggle: 'Mostra i suggerimenti',
+		grid: 'Tocca uno studente per registrare un richiamo. Ogni badge conta i richiami nella finestra; colore e lettera indicano cosa farà scattare il prossimo.',
+		switchClass: 'Cambia classe',
+		sheet:
+			'Tocca una categoria per registrare subito il richiamo. Dal messaggio che appare puoi annullarlo o aggiungere una nota.',
+		transcribe:
+			'Riporta queste voci sul registro, poi segnale come fatte con la spunta, una per una o tutte insieme.',
+		markOne: 'Fatto',
+		checked: 'Il registro è corretto: togli la segnalazione',
+		history:
+			"Matita: aggiungi o modifica la nota. Annulla evento: l'evento resta in elenco, barrato, e non conta più.",
+		editNote: 'Nota',
+		void: 'Annulla evento',
+		window: 'Contano solo i richiami degli ultimi N giorni.',
+		ladder: "Ogni gradino stabilisce cosa succede dall'N-esimo richiamo nella finestra in poi.",
+		resetCategory: 'Ripristina nome, finestra, gradini e note rapide predefiniti',
+		exportJson: 'Backup completo di questo dispositivo; si può reimportare',
+		exportCsv: 'Tutti gli eventi in un foglio di calcolo; non è un backup'
+	},
 	errors: {
 		generic: 'Qualcosa è andato storto.',
 		storage: 'La memoria non è disponibile in questo browser. I dati non possono essere salvati.'

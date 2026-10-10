@@ -8,6 +8,12 @@ export function dayKey(ms: number): string {
 	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** Local date and time of an instant for file names, e.g. "2026-10-09_14-32-05". */
+export function fileStamp(ms: number): string {
+	const d = new Date(ms);
+	return `${dayKey(ms)}_${pad(d.getHours())}-${pad(d.getMinutes())}-${pad(d.getSeconds())}`;
+}
+
 function parts(key: string): [number, number, number] {
 	const [y, m, d] = key.split('-').map(Number);
 	return [y, m, d];

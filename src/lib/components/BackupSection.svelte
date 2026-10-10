@@ -12,6 +12,7 @@
 	import { deliverFile } from '../share';
 	import { app, toast } from '../state';
 	import { BackupError, type ImportMode, type ImportReport } from '../storage';
+	import Hint from './Hint.svelte';
 	import { DownloadIcon, UploadIcon } from './icons';
 
 	// Follows the stored setting; typing in the field overrides it until the next change.
@@ -157,12 +158,16 @@
 	<p class="text-sm text-muted">{lastExport}</p>
 
 	<div class="flex flex-wrap gap-2">
-		<button type="button" class="btn btn-primary" onclick={exportJson}>
-			<DownloadIcon size={18} />{t('settings.backup.exportJson')}
-		</button>
-		<button type="button" class="btn" onclick={exportCsv}>
-			<DownloadIcon size={18} />{t('settings.backup.exportCsv')}
-		</button>
+		<Hint text={t('hints.exportJson')} align="start">
+			<button type="button" class="btn btn-primary" onclick={exportJson}>
+				<DownloadIcon size={18} />{t('settings.backup.exportJson')}
+			</button>
+		</Hint>
+		<Hint text={t('hints.exportCsv')} align="start">
+			<button type="button" class="btn" onclick={exportCsv}>
+				<DownloadIcon size={18} />{t('settings.backup.exportCsv')}
+			</button>
+		</Hint>
 	</div>
 
 	<div class="grid gap-2 border-t border-line pt-3">

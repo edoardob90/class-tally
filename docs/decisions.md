@@ -196,3 +196,20 @@ Format: context, choice, alternatives discarded. IDs are stable; the Summary in 
 
 - Context: the category sheet tinted each card by the escalation level, so two categories at the same level (e.g. Homework and Materials) differed only by their icon. A first attempt (violet and magenta, with a coloured icon tile) was rejected: the two hues were too close and the tile clashed with the card.
 - Choice: the card background is the category colour, from the Flexoki palette (100 fill, 300 border, 800 text): purple for Behaviour, green for Homework, cyan for Materials. The icon simply takes the card's text colour. The escalation level moves to its own chip ("Next: Register entry R"), coloured with Flexoki blue, orange and red, so level and category use different colour families. The same category tint is used for the category chip in event rows. Colour is never the only carrier of meaning: icons, names and level letters stay.
+
+## D-45 Export file names carry date and time
+
+- Context: exports were named by day only (`class-tally-backup-2026-10-09.json`), so a second export on the same day replaced the first one in Files or Downloads.
+- Choice: local date and time to the second, `class-tally-backup-2026-10-09_14-32-05.json` and `class-tally-events-2026-10-09_14-32-05.csv`. Hyphens and an underscore only, so the name is valid on every file system and sorts chronologically. Requested by the owner.
+
+## D-46 Tab state kept for the session
+
+- Context: each route kept its filters in component state, so switching tabs reset History (mode, class, student, category, range) and closed the Settings sections. Requested by the owner.
+- Choice: a session-only UI store (`src/lib/state/ui.svelte.ts`) holds the History filters and the open Settings sections. It lives in memory: switching tabs keeps it, relaunching the app starts fresh. Nothing is written to storage or backups. A `?student=` link still selects that student. While the date range is untouched it follows the current day (last 7 days), so a long-lived session does not stay on yesterday's range. Unsaved edits inside a category form are not kept (the form reloads the stored values).
+- Discarded: SvelteKit snapshots (they restore on history back and forward, not on tab links); `localStorage` (filters from an old session are more confusing than helpful).
+
+## D-47 Help hints
+
+- Context: the owner asked for explanations of the actions, toggled by a "?" button: tooltips on hover on desktop, small readable captions on phones.
+- Choice: a "?" button at the right end of every page header (no extra row, no floating button over content). While on, a `Hint` component shows a short caption under each explained control on touch screens, and a tooltip on hover or keyboard focus where the pointer can hover (`(hover: hover) and (pointer: fine)`); the same markup serves both, CSS decides. Longer explanations are short notes at the top of a screen or form section, so captions under icon buttons stay one or two words. Off, nothing is rendered. The toggle is remembered on the device in `localStorage`: it is a viewing preference, not data, so it is not in the settings record or in backups. Self-explanatory controls (labelled buttons, navigation, toasts) get no hint.
+- Discarded: the native `title` attribute alone (no touch support, slow to appear); a floating "?" over the content (it would cover the header controls on the class screen).

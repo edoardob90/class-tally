@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import ClassCard from '../../lib/components/ClassCard.svelte';
+	import HintToggle from '../../lib/components/HintToggle.svelte';
 	import { PlusIcon, UploadIcon } from '../../lib/components/icons';
 	import { t } from '../../lib/i18n';
 	import { app } from '../../lib/state';
@@ -28,7 +29,10 @@
 
 <header class="mb-3 flex items-center justify-between gap-2">
 	<h1 class="text-2xl font-bold">{t('classes.title')}</h1>
-	<a class="btn" href={resolve('/import')}><UploadIcon size={18} />{t('home.importRoster')}</a>
+	<a class="btn ml-auto" href={resolve('/import')}
+		><UploadIcon size={18} />{t('home.importRoster')}</a
+	>
+	<HintToggle />
 </header>
 
 <form onsubmit={create} class="card mb-4 grid gap-2">

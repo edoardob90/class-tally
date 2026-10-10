@@ -3,6 +3,7 @@ import {
 	addDaysToKey,
 	dayKey,
 	dayRangeBounds,
+	fileStamp,
 	isDayKey,
 	startOfDay,
 	type SchoolClass,
@@ -15,6 +16,11 @@ describe('local days', () => {
 	it('names the local day of an instant', () => {
 		expect(dayKey(local(2026, 10, 9, 0, 5))).toBe('2026-10-09');
 		expect(dayKey(local(2026, 10, 9, 23, 59))).toBe('2026-10-09');
+	});
+
+	it('stamps file names with local date and time to the second', () => {
+		expect(fileStamp(local(2026, 10, 9, 7, 4) + 3_000)).toBe('2026-10-09_07-04-03');
+		expect(fileStamp(local(2026, 10, 9, 23, 59) + 59_000)).toBe('2026-10-09_23-59-59');
 	});
 
 	it('adds calendar days across the DST changes', () => {

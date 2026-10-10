@@ -2,6 +2,8 @@
 	import ActionChip from '../../lib/components/ActionChip.svelte';
 	import CategoryChip from '../../lib/components/CategoryChip.svelte';
 	import CountBadge from '../../lib/components/CountBadge.svelte';
+	import Hint from '../../lib/components/Hint.svelte';
+	import HintToggle from '../../lib/components/HintToggle.svelte';
 	import {
 		CheckCheckIcon,
 		CheckIcon,
@@ -68,8 +70,12 @@
 	<title>{t('transcribe.title')} · {t('app.name')}</title>
 </svelte:head>
 
-<h1 class="text-2xl font-bold">{t('transcribe.title')}</h1>
+<header class="flex items-center justify-between gap-2">
+	<h1 class="text-2xl font-bold">{t('transcribe.title')}</h1>
+	<HintToggle />
+</header>
 <p class="mb-3 text-sm text-muted">{t('transcribe.pending', { count: list.pending })}</p>
+<Hint text={t('hints.transcribe')} />
 
 {#if list.pending === 0 && list.flagged.length === 0}
 	<div class="card mt-6 text-center">
@@ -89,9 +95,11 @@
 					{@render detail(item)}
 					<p class="mt-1 text-sm font-semibold text-red-900">{t('transcribe.checkRegisterHint')}</p>
 					<div class="mt-2 flex justify-end">
-						<button type="button" class="btn" onclick={() => checked(item.event.id)}>
-							<CheckIcon size={18} />{t('transcribe.checked')}
-						</button>
+						<Hint text={t('hints.checked')} align="end">
+							<button type="button" class="btn" onclick={() => checked(item.event.id)}>
+								<CheckIcon size={18} />{t('transcribe.checked')}
+							</button>
+						</Hint>
 					</div>
 				</li>
 			{/each}
@@ -113,14 +121,16 @@
 				{#each day.items as item (item.event.id)}
 					<li class="card flex items-center gap-2">
 						<div class="min-w-0 flex-1">{@render detail(item)}</div>
-						<button
-							type="button"
-							class="btn shrink-0"
-							aria-label="{t('transcribe.markTranscribed')}: {item.student}"
-							onclick={() => mark([item.event.id])}
-						>
-							<CheckIcon size={20} />
-						</button>
+						<Hint text={t('hints.markOne')} align="end" class="shrink-0">
+							<button
+								type="button"
+								class="btn shrink-0"
+								aria-label="{t('transcribe.markTranscribed')}: {item.student}"
+								onclick={() => mark([item.event.id])}
+							>
+								<CheckIcon size={20} />
+							</button>
+						</Hint>
 					</li>
 				{/each}
 			</ul>
